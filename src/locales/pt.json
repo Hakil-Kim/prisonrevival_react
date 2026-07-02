@@ -314,13 +314,13 @@
   "guideTitle5": "(5) Registro Serviço Online: Telemóvel",
   "guideTitle6": "(6) Registro Serviço Online: PC",
   "guideTitle7": "(7) Q & A",
-  "volGuideTitleMain": "Guia Voluntário",
-  "volGuideDescMain": "Como se juntar como voluntário de prisão.",
+  "volGuideTitleMain": "Voluntário do Prison Revival<br>(Prison RevivaL Volunteer)",
+  "volGuideDescMain": "Inscreva-se agora mesmo como voluntário do Prison Revival",
   "volGuideIntroTitle": "Introdução aos Voluntários do Prison Revival",
   "volGuideIntroHeading": "Quem são os voluntários do Prison Revival?",
-  "volGuideIntroText": "Os voluntários do Prison Revival são ministros leigos que servem como canais práticos para compartilhar o Evangelho com aqueles que estão atrás das grades.<br><br>Os participantes juntam-se ao ministério imprimindo e enviando materiais de meditação semanais através do correio online, pagando os custos de postagem diretamente.<br><br>Mais do que qualificações especiais ou experiência, é necessário um sentido de responsabilidade e dedicação para entregar consistentemente a Palavra. Embora qualquer pessoa possa aprender e participar, o compromisso contínuo é o aspeto mais importante deste ministério.<br><br>Uma única carta serve como um canal para transformar a vida de uma pessoa, e a participação de um voluntário liga-se diretamente a uma alma.<br><br>Atualmente, 480 voluntários servem neste ministério, e estamos a rezar para que 3,000 voluntários se juntem a nós.",
+  "volGuideIntroText": "O Voluntariado do Prison Revival é um ministério missionário leigo que serve como o canal mais prático para compartilhar o Evangelho com aqueles que estão atrás das grades.<br><br>Os voluntários participam do ministério imprimindo e enviando os materiais de meditação semanais através do correio online, assumindo diretamente os custos de postagem. Embora não exija habilidades especiais ou conhecimento técnico, é um ministério que requer senso de responsabilidade e dedicação para entregar consistentemente a Palavra a cada alma.<br><br>Muitas pessoas atrás das grades não podem visitar uma igreja livremente e não têm muitas oportunidades de conhecer o Evangelho. No entanto, uma única carta enviada por alguém torna-se um canal para transmitir a Palavra de Deus a elas e, às vezes, um presente que lhes dá força e esperança para viver em meio ao desespero.<br><br>De fato, inúmeros irmãos e irmãs atrás das grades estão se encontrando com Jesus através das meditações semanais e experimentando conselho e restauração na Palavra. Além disso, continuam a surgir histórias de pessoas que mantêm a vida de fé e iniciam uma nova vida após a libertação.<br><br>Um voluntário de prisão não é apenas alguém que envia correspondência. É um cooperador que ora por uma alma e compartilha o Evangelho, um valioso servo que participa ativamente da obra de Deus ao transformar a vida de alguém.<br><br>Atualmente, cerca de 480 voluntários participam deste ministério. No entanto, são necessários mais cooperadores para levar o Evangelho a mais de 64.000 irmãos e irmãs atrás das grades em 57 instituições correcionais na Coreia do Sul.<br><br>O Prison Revival está orando para que 3.000 voluntários se unam a nós no futuro. Sua pequena dedicação pode ser a primeira oportunidade para alguém se encontrar com o Evangelho.<br><br><strong>Alguém está esperando pelo Evangelho que você envia.</strong>",
   "volGuideKakaoTitle": "Inscrever-se para Voluntariado no Prison Revival",
-  "volGuideKakaoBtn": "Consultar via Kakao",
+  "volGuideKakaoBtn": "Candidatar-se ao Voluntariado de Prisão (Consulta por Canal)",
   "volGuideVideoTitle": "Guia de Envio de Devocionais do Prison Revival",
   "volGuideVideoDesc": "Clique no vídeo para ver o guia detalhado.",
   "volGuideChatTitle": "Participar no Chat de Grupo Principal do Prison Revival",
@@ -354,5 +354,6 @@
   "sitemapDesc": "Mapa do site do Prison Revival",
   "notFoundTitle": "Página Não Encontrada",
   "notFoundDesc": "A página que você está procurando pode ter sido removida, ter seu nome alterado ou está temporariamente indisponível.",
-  "notFoundBtn": "Voltar para o início"
+  "notFoundBtn": "Voltar para o início",
+  "volGuideProfileBtn": "Solicitar Trabalho de Foto de Perfil de Voluntário"
 }

@@ -314,13 +314,13 @@
   "guideTitle5": "(5) Registro Servicio Online: Móvil",
   "guideTitle6": "(6) Registro Servicio Online: PC",
   "guideTitle7": "(7) Q & A",
-  "volGuideTitleMain": "Guía Voluntaria",
-  "volGuideDescMain": "Cómo unirse como voluntario de prisión.",
+  "volGuideTitleMain": "Voluntario de Prison Revival<br>(Prison RevivaL Volunteer)",
+  "volGuideDescMain": "Regístrese ahora mismo como voluntario de Prison Revival",
   "volGuideIntroTitle": "Introducción a los Voluntarios de Prison Revival",
   "volGuideIntroHeading": "¿Quiénes son los voluntarios de Prison Revival?",
-  "volGuideIntroText": "Los voluntarios de Prison Revival son ministros laicos que sirven como conductos prácticos para compartir el Evangelio con aquellos que están tras las rejas.<br><br>Los participantes se unen al ministerio imprimiendo y enviando materiales de meditación semanales a través de la oficina de correos en línea, pagando los costos de envío directamente.<br><br>Más que calificaciones especiales o experiencia, se requiere un sentido de responsabilidad y dedicación para entregar constantemente la Palabra. Aunque cualquiera puede aprender y participar, el compromiso continuo es el aspecto más importante de este ministerio.<br><br>Una sola carta sirve como canal para transformar la vida de una persona, y la participación de un voluntario se conecta directamente con un alma.<br><br>Actualmente, 480 voluntarios sirven en este ministerio, y estamos orando para que 3,000 voluntarios se unan a nosotros.",
+  "volGuideIntroText": "El Voluntariado de Prison Revival es un ministerio misionero laico que sirve como el conducto más práctico para compartir el Evangelio con aquellos que están tras las rejas.<br><br>Los voluntarios participan en el ministerio imprimiendo y enviando por correo los materiales de meditación semanales a través de la oficina de correos en línea, asumiendo directamente los costos de envío. Aunque no requiere habilidades especiales ni experiencia, es un ministerio que exige un sentido de responsabilidad y dedicación para entregar constantemente la Palabra a cada alma.<br><br>Muchas personas que están tras las rejas no pueden visitar una iglesia libremente y no tienen muchas oportunidades de encontrarse con el Evangelio. Sin embargo, una sola carta enviada por alguien se convierte en un canal para hacerles llegar la Palabra de Dios y, a veces, en un regalo que les da fuerza y esperanza para seguir viviendo en medio de la desesperación.<br><br>De hecho, innumerables hermanos y hermanas tras las rejas se están encontrando con Jesús a través de las meditaciones semanales y están experimentando consuelo y restauración en la Palabra. Además, se siguen compartiendo testimonios de personas que continúan con su vida de fe y comienzan una nueva vida incluso después de ser liberadas.<br><br>Un voluntario de prisiones no es simplemente alguien que envía correspondencia. Es un colaborador que ora por un alma y comparte el Evangelio, un valioso servidor que participa junto a Dios en la transformación de la vida de alguien.<br><br>Actualmente, unos 480 voluntarios participan en este ministerio. Sin embargo, se necesitan más colaboradores para llevar el Evangelio a más de 64,000 hermanos y hermanas tras las rejas en las 57 instituciones correccionales de Corea del Sur.<br><br>Prison Revival está orando para que 3,000 voluntarios se unan a esta labor en el futuro. Su pequeña dedicación puede ser la primera oportunidad para que alguien conozca el Evangelio.<br><br><strong>Alguien está esperando el Evangelio que usted envía.</strong>",
   "volGuideKakaoTitle": "Solicitar Voluntariado en Prison Revival",
-  "volGuideKakaoBtn": "Consultar vía Kakao",
+  "volGuideKakaoBtn": "Postular a Voluntariado de Prisión (Consulta por Canal)",
   "volGuideVideoTitle": "Guía de Envío de Devocionales de Prison Revival",
   "volGuideVideoDesc": "Haga clic en el video para ver la guía detallada.",
   "volGuideChatTitle": "Unirse al Chat Grupal Principal de Prison Revival",
@@ -354,5 +354,6 @@
   "sitemapDesc": "Mapa del sitio de Prison Revival",
   "notFoundTitle": "Página no encontrada",
   "notFoundDesc": "La página que busca podría haber sido eliminada, haber cambiado de nombre o no estar disponible temporalmente.",
-  "notFoundBtn": "Volver al inicio"
+  "notFoundBtn": "Volver al inicio",
+  "volGuideProfileBtn": "Solicitar Trabajo de Foto de Perfil de Voluntario"
 }

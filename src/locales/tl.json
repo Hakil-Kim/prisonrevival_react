@@ -314,13 +314,13 @@
   "guideTitle5": "(5) Pagpaparehistro sa Online Service ng Kulungan: Mobile",
   "guideTitle6": "(6) Pagpaparehistro sa Online Service ng Kulungan: PC",
   "guideTitle7": "(7) Q & A",
-  "volGuideTitleMain": "Gabay sa Boluntaryo",
-  "volGuideDescMain": "Paano sumali bilang Boluntaryo sa Bilangguan.",
+  "volGuideTitleMain": "Volunteer ng Prison Revival<br>(Prison RevivaL Volunteer)",
+  "volGuideDescMain": "Mag-apply na ngayon bilang Volunteer ng Prison Revival",
   "volGuideIntroTitle": "Introduksyon sa Boluntaryo ng Prison Revival",
   "volGuideIntroHeading": "Sino ang mga Prison Revival Volunteer?",
-  "volGuideIntroText": "Ang mga Prison Revival volunteer ay mga lay minister na nagsisilbing praktikal na daluyan para sa pagbabahagi ng Mabuting Balita sa mga nasa loob ng bilangguan.<br><br>Ang mga kalahok ay sumasali sa ministeryo sa pamamagitan ng pag-print at pagpapadala ng lingguhang meditation material gamit ang online post office, at direktang nagbabayad para sa mga gastos sa selyo.<br><br>Sa halip na mga espesyal na kwalipikasyon o kadalubhasaan, ang pakiramdam ng pananagutan at dedikasyon sa patuloy na paghahatid ng Salita ang kinakailangan. Bagama't kahit sino ay maaaring matuto at lumahok, ang patuloy na pangako ang pinakamahalagang aspeto ng ministeryong ito.<br><br>Ang isang liham ay nagsisilbing channel upang baguhin ang buhay ng isang tao, at ang pakikilahok ng isang volunteer ay direktang kumokonekta sa isang kaluluwa.<br><br>Sa kasalukuyan, 480 na volunteer ang naglilingkod sa ministeryong ito, at ipinapanalangin namin na 3,000 na volunteer ang sumali sa amin.",
+  "volGuideIntroText": "Ang Prison Revival Volunteer ay isang lay mission ministry na nagsisilbing pinakapraktikal na daluyan para sa pagbabahagi ng Mabuting Balita sa mga nasa loob ng bilangguan.<br><br>Ang mga volunteer ay sumasali sa ministeryo sa pamamagitan ng pag-print at pagpapadala ng lingguhang meditation material gamit ang online post office, at direktang nagbabayad para sa mga gastos sa selyo. Bagama't hindi ito nangangailangan ng mga espesyal na kasanayan o kadalubhasaan, ito ay isang ministeryo na nangangailangan ng pananagutan at dedikasyon upang patuloy na maihatid ang Salita sa bawat kaluluwa.<br><br>Maraming tao sa loob ng bilangguan ang hindi malayang makapunta sa simbahan, at walang sapat na pagkakataon upang marinig ang Mabuting Balita. Gayunpaman, ang isang liham na ipinadala ng isang tao ay nagiging daan upang maiparating sa kanila ang Salita ng Diyos, at kung minsan ay nagiging regalo na nagbibigay sa kanila ng lakas at pag-asa sa gitna ng kawalan ng pag-asa.<br><br>Sa katunayan, napakaraming kapatid sa loob ng bilangguan ang nakakatagpo kay Hesus sa pamamagitan ng lingguhang meditasyon at nakakaranas ng aliw at pagpapanumbalik sa Salita. Bukod dito, patuloy na ibinabahagi ang mga kwento ng mga nagpapatuloy sa kanilang buhay pananampalataya at nagsisimula ng bagong buhay kahit pagkatapos nilang makalaya.<br><br>Ang isang prison volunteer ay hindi lamang basta nagpapadala ng sulat. Sila ay mga katuwang sa paglilingkod na nananalangin para sa isang kaluluwa at nagbabahagi ng Mabuting Balita, mga mahalagang lingkod na nakikibahagi sa gawa ng Diyos sa pagbabago ng buhay ng isang tao.<br><br>Sa kasalukuyan, may humigit-kumulang 480 na volunteer ang kabilang sa ministeryong ito. Gayunpaman, mas maraming katuwang sa paglilingkod ang kailangan upang maipalaganap ang Mabuting Balita sa higit sa 64,000 na kapatid sa loob ng 57 na pasilidad ng bilangguan sa buong Timog Korea.<br><br>Ang Prison Revival ay nananalangin na magkaroon ng 3,000 volunteer na magkakasamang maglilingkod sa hinaharap. Ang iyong maliit na dedikasyon ay maaaring maging unang pagkakataon para sa isang tao na makatagpo ang Mabuting Balita.<br><br><strong>May naghihintay sa Mabuting Balita na iyong ipapadala.</strong>",
   "volGuideKakaoTitle": "Mag-apply para sa Boluntaryo ng Prison Revival",
-  "volGuideKakaoBtn": "Magtanong sa pamamagitan ng Kakao",
+  "volGuideKakaoBtn": "Mag-apply para sa Boluntaryo sa Bilangguan (Magtanong sa Channel)",
   "volGuideVideoTitle": "Gabay sa Pagpapadala ng Devotional ng Prison Revival",
   "volGuideVideoDesc": "I-click ang video upang makita ang detalyadong gabay.",
   "volGuideChatTitle": "Sumali sa Pangunahing Group Chat ng Prison Revival",
@@ -354,5 +354,6 @@
   "sitemapDesc": "Sitemap ng Prison Revival",
   "notFoundTitle": "Hindi Nahanap ang Pahina",
   "notFoundDesc": "Ang pahinang hinahanap mo ay maaaring tinanggal, pinalitan ang pangalan, o pansamantalang hindi magagamit.",
-  "notFoundBtn": "Bumalik sa Home"
+  "notFoundBtn": "Bumalik sa Home",
+  "volGuideProfileBtn": "Mag-apply para sa Paggawa ng Larawan sa Profile ng Volunteer"
 }

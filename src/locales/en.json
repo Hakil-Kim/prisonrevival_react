@@ -314,13 +314,13 @@
   "guideTitle5": "(5) Ministry Online Service Registration: Mobile",
   "guideTitle6": "(6) Ministry Online Service Registration: PC",
   "guideTitle7": "(7) Q & A",
-  "volGuideTitleMain": "Volunteer Guide",
-  "volGuideDescMain": "How to join as a Prison Volunteer.",
+  "volGuideTitleMain": "Prison Revival Volunteer",
+  "volGuideDescMain": "Apply now to become a Prison Revival Volunteer",
   "volGuideIntroTitle": "Prison Revival Volunteer Intro",
   "volGuideIntroHeading": "Who are Prison Revival Volunteers?",
-  "volGuideIntroText": "Prison Revival volunteers are lay ministers who serve as practical conduits for sharing the Gospel with those behind bars.<br><br>Participants join the ministry by printing and sending weekly meditation materials via the online post office, paying for the postage costs directly.<br><br>Rather than special qualifications or expertise, a sense of responsibility and dedication to consistently delivering the Word is required. While anyone can learn and participate, continuous commitment is the most important aspect of this ministry.<br><br>A single letter serves as a channel to transform a person's life, and the participation of one volunteer connects directly to one soul.<br><br>Currently, 480 volunteers are serving in this ministry, and we are praying for 3,000 volunteers to join us.",
+  "volGuideIntroText": "Prison Revival Volunteer is a lay mission ministry that serves as the most practical conduit for sharing the Gospel with those behind bars.<br><br>Volunteers participate in the ministry by printing and mailing weekly meditation materials via the online post office and paying for the postage costs directly. While it does not require special skills or expertise, it is a ministry that requires a sense of responsibility and dedication to consistently deliver the Word to a single soul.<br><br>Many people behind bars cannot freely visit a church, and they do not have many opportunities to encounter the Gospel. However, a single letter sent by someone becomes a channel for delivering the Word of God to them, and sometimes a gift that gives them the strength and hope to live on in despair.<br><br>In fact, countless brothers and sisters behind bars are meeting Jesus through the weekly meditations and experiencing comfort and restoration in the Word. Furthermore, stories of those who continue their faith life and start a new life even after their release continue to be shared.<br><br>A prison volunteer is not just someone who sends mail. They are co-workers who pray for a soul and share the Gospel, and precious ministers who participate together in the work of God transforming someone's life.<br><br>Currently, about 480 volunteers are serving in this ministry. However, more co-workers are needed to share the Gospel with more than 64,000 brothers and sisters behind bars in 57 correctional institutions across South Korea.<br><br>Prison Revival is praying for 3,000 volunteers to stand together in the future. Your small dedication can be the first opportunity for someone to encounter the Gospel.<br><br><strong>Someone is waiting for the Gospel you send.</strong>",
   "volGuideKakaoTitle": "Apply for Prison Revival Volunteer",
-  "volGuideKakaoBtn": "Inquire via Kakao",
+  "volGuideKakaoBtn": "Apply for Prison Volunteer (Inquire via Channel)",
   "volGuideVideoTitle": "Prison Revival Mailing Guide",
   "volGuideVideoDesc": "Click on the video to see the detailed guide.",
   "volGuideChatTitle": "Join Prison Revival Main Group Chat",
@@ -354,5 +354,6 @@
   "sitemapDesc": "Prison Revival Sitemap",
   "notFoundTitle": "Page Not Found",
   "notFoundDesc": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.",
-  "notFoundBtn": "Go to Home"
+  "notFoundBtn": "Go to Home",
+  "volGuideProfileBtn": "Apply for Volunteer Profile Photo Design"
 }

@@ -60,7 +60,7 @@ const VolunteerGuide = () => {
       <section className="page-hero">
         <div className="page-hero-bg"></div>
         <div className="container">
-          <h1 className="section-title fade-in">{t('volGuideTitleMain')}</h1>
+          <h1 className="section-title fade-in" dangerouslySetInnerHTML={{ __html: t('volGuideTitleMain') }}></h1>
           <p className="section-desc fade-in delay-1">{t('volGuideDescMain')}</p>
         </div>
       </section>
@@ -258,6 +258,15 @@ const VolunteerGuide = () => {
               ))}
             </div>
           </div>
+        </div>
+        <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+          <button 
+            onClick={() => window.open('https://open.kakao.com/o/gGAxvGAi', '_blank')} 
+            className="kakao-btn"
+          >
+            <span style={{ fontSize: '1.4rem' }}>💬</span>
+            <span>{t('volGuideProfileBtn')}</span>
+          </button>
         </div>
       </section>
 
