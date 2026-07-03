@@ -1,12 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MEDITATION_DATES } from '../constants/meditation_data';
 import AlertModal from '../components/common/AlertModal';
 import { getMeditationData, saveAllMeditations } from '../services/meditationService';
 
 const Admin = () => {
+  const navigate = useNavigate();
+  const [isVerified, setIsVerified] = useState(false);
+  const [inputPass, setInputPass] = useState('');
+  const [errorMsg, setErrorMsg] = useState('');
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // 세션 저장소에 인증 기록이 있는지 확인
+    const sessionAuth = sessionStorage.getItem('admin_verified');
+    if (sessionAuth === 'true') {
+      setIsVerified(true);
+    }
+  }, []);
+
   const [date, setDate] = useState('');
   const [links, setLinks] = useState({
     ko: '',
@@ -24,6 +37,7 @@ const Admin = () => {
   const [selectedFilterDate, setSelectedFilterDate] = useState('');
 
   useEffect(() => {
+    if (!isVerified) return; // 인증되지 않은 상태이면 데이터를 로드하지 않음
     const loadData = async () => {
       try {
         const dbData = await getMeditationData();
@@ -36,7 +50,124 @@ const Admin = () => {
       }
     };
     loadData();
-  }, []);
+  }, [isVerified]);
+
+  const handlePassSubmit = (e) => {
+    e.preventDefault();
+    const expectedPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+    if (inputPass === expectedPassword) {
+      sessionStorage.setItem('admin_verified', 'true');
+      setIsVerified(true);
+      setErrorMsg('');
+    } else {
+      setErrorMsg('비밀번호가 올바르지 않습니다.');
+    }
+  };
+
+  if (!isVerified) {
+    return (
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        minHeight: '100vh', 
+        backgroundColor: 'var(--off-white)'
+      }}>
+        <div style={{
+          backgroundColor: '#ffffff',
+          padding: '3rem 2.5rem',
+          borderRadius: '16px',
+          boxShadow: '0 12px 40px rgba(17, 42, 34, 0.08)',
+          width: '100%',
+          maxWidth: '360px',
+          textAlign: 'center',
+          boxSizing: 'border-box'
+        }}>
+          <h2 style={{ 
+            fontFamily: 'var(--font-serif)', 
+            fontSize: '1.8rem', 
+            color: 'var(--dark-green)', 
+            margin: '0 0 0.5rem 0' 
+          }}>
+            관리자 인증
+          </h2>
+          <p style={{ 
+            fontSize: '0.9rem', 
+            color: '#666', 
+            margin: '0 0 2rem 0' 
+          }}>
+            묵상 자료 관리를 위해 비밀번호를 입력해 주세요.
+          </p>
+
+          <form onSubmit={handlePassSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+            <input 
+              type="password" 
+              placeholder="비밀번호 입력"
+              value={inputPass}
+              onChange={(e) => setInputPass(e.target.value)}
+              style={{
+                padding: '0.9rem 1.2rem',
+                borderRadius: '8px',
+                border: '1px solid #d1d5db',
+                fontSize: '1rem',
+                outline: 'none',
+                transition: 'all 0.2s',
+                boxSizing: 'border-box',
+                width: '100%'
+              }}
+              onFocus={(e) => e.target.style.borderColor = 'var(--dark-green)'}
+              onBlur={(e) => e.target.style.borderColor = '#d1d5db'}
+              required
+            />
+            
+            {errorMsg && (
+              <p style={{ 
+                color: '#ef4444', 
+                fontSize: '0.85rem', 
+                margin: 0,
+                textAlign: 'left',
+                fontWeight: '500'
+              }}>
+                ⚠️ {errorMsg}
+              </p>
+            )}
+
+            <button 
+              type="submit" 
+              className="primary-btn"
+              style={{ 
+                padding: '1rem', 
+                fontSize: '1rem', 
+                fontWeight: '600', 
+                border: 'none', 
+                cursor: 'pointer',
+                width: '100%',
+                boxSizing: 'border-box'
+              }}
+            >
+              확인
+            </button>
+
+            <Link 
+              to="/" 
+              style={{ 
+                fontSize: '0.9rem', 
+                color: '#888', 
+                textDecoration: 'none',
+                marginTop: '0.5rem',
+                display: 'inline-block',
+                transition: 'color 0.2s'
+              }}
+              onMouseEnter={(e) => e.target.style.color = '#333'}
+              onMouseLeave={(e) => e.target.style.color = '#888'}
+            >
+              ← 메인 화면으로 돌아가기
+            </Link>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   const handleInputChange = (lang, value) => {
     setLinks(prev => ({
