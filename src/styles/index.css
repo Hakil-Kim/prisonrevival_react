@@ -1918,6 +1918,23 @@ footer {
   opacity: 1;
 }
 
+#notice-page .page-hero {
+  padding-top: 160px;
+  padding-bottom: 110px;
+}
+
+#notice-page .page-hero-bg {
+  background-image: linear-gradient(to bottom, rgba(17, 42, 34, 0.65) 0%, rgba(17, 42, 34, 0.85) 100%), url('/images/notice_hero_bg.png');
+  background-size: cover;
+  background-position: center 75%;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+#notice-page .section {
+  padding-top: 2rem;
+}
+
 #intro-page .section {
   padding-top: 2rem;
 }

@@ -88,7 +88,7 @@ const Home = () => {
     { id: 7, name: '프리즌 홈리스 사역', to: '/volunteer-programs#homeless', coords: { left: '22.1%', top: '46.9%', width: '11.6%', height: '10.7%' } },
     { id: 8, name: '엔젤트리', to: '/angeltree', coords: { left: '69.1%', top: '14.9%', width: '10.8%', height: '15.3%' } },
     { id: 9, name: '프리즌 발렌티어 참여하기', to: '/volunteer-guide', coords: { left: '86.3%', top: '35.9%', width: '12.0%', height: '12.8%' } },
-    { id: 10, name: '후원하기', to: '#', coords: { left: '62.9%', top: '33.3%', width: '8.1%', height: '11.6%' } },
+    { id: 10, name: '후원하기', to: '/programs#book-project', coords: { left: '62.9%', top: '33.3%', width: '8.1%', height: '11.6%' } },
     { id: 11, name: '간증&스토리', to: '/youtube#inside', coords: { left: '63.2%', top: '57.2%', width: '11.8%', height: '13.7%' } },
     { id: 12, name: '프리즌 미디어 센터', to: '/youtube', coords: { left: '81.9%', top: '68.8%', width: '13.1%', height: '11.7%' } },
     { id: 13, name: '발렌티어 지원하기', to: 'http://pf.kakao.com/_ptYAG/chat', coords: { left: '2.2%', top: '91.4%', width: '7.0%', height: '3.0%' } },
@@ -531,60 +531,87 @@ const Home = () => {
         <div className="container">
           <h2 className="section-title">{t('noticeTitle')}</h2>
           <div className="notice-board" ref={noticeBoardRef}>
-            {Object.values(NOTICE_DATA)
-              .sort((a, b) => b.date.localeCompare(a.date))
-              .map((notice, index) => {
-                const isActive = activeNoticeId === notice.id;
-                return (
-                  <div 
-                    key={notice.id}
-                    className="notice-item-wrapper"
-                    style={{ 
-                      display: 'flex', 
-                      flexDirection: 'column', 
-                      width: '100%',
-                      marginTop: index > 0 ? '0.5rem' : '0' 
-                    }}
-                  >
+            {(() => {
+              const today = new Date();
+              const thirtyDaysAgo = new Date();
+              thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+              const filtered = NOTICE_DATA
+                .filter(notice => {
+                  const noticeDate = new Date(notice.date.replace(/\./g, '-'));
+                  return noticeDate >= thirtyDaysAgo;
+                })
+                .sort((a, b) => b.date.localeCompare(a.date));
+
+              return filtered.length > 0 ? (
+                filtered.map((notice, index) => {
+                  const isActive = activeNoticeId === notice.id;
+                  return (
                     <div 
-                      className={`notice-item ${isActive ? 'active' : ''}`}
-                      onClick={() => setActiveNoticeId(isActive ? null : notice.id)}
-                      style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
-                    >
-                      <div className="notice-left">
-                        <span className="notice-dot"></span>
-                        <span>{notice.title}</span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                        <span className={`notice-tag ${notice.tagClass || ''}`} style={{ whiteSpace: 'nowrap' }}>{notice.date}</span>
-                        <span style={{ fontSize: '0.8rem', opacity: 0.6, transform: isActive ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', display: 'inline-block' }}>▼</span>
-                      </div>
-                    </div>
-                    <div 
-                      className="notice-detail-content" 
-                      style={{
-                        maxHeight: isActive ? '1000px' : '0',
-                        opacity: isActive ? 1 : 0,
-                        overflow: 'hidden',
-                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                        padding: isActive ? '1.5rem' : '0 1.5rem',
-                        backgroundColor: '#f9fafb',
-                        borderRadius: '8px',
-                        marginTop: isActive ? '0.5rem' : '0',
-                        marginBottom: isActive ? '1rem' : '0',
-                        fontSize: '0.95rem',
-                        lineHeight: '1.75',
-                        color: '#374151',
-                        textAlign: 'left',
-                        border: isActive ? '1px solid rgba(17, 42, 34, 0.08)' : 'none'
+                      key={notice.id}
+                      className="notice-item-wrapper"
+                      style={{ 
+                        display: 'flex', 
+                        flexDirection: 'column', 
+                        width: '100%',
+                        marginTop: index > 0 ? '0.5rem' : '0' 
                       }}
-                      onClick={(e) => e.stopPropagation()}
                     >
-                      {renderContentWithLinks(notice.content)}
+                      <div 
+                        className={`notice-item ${isActive ? 'active' : ''}`}
+                        onClick={() => setActiveNoticeId(isActive ? null : notice.id)}
+                        style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
+                      >
+                        <div className="notice-left">
+                          <span className="notice-dot"></span>
+                          <span>{notice.title}</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                          <span className={`notice-tag ${notice.tagClass || ''}`} style={{ whiteSpace: 'nowrap' }}>{notice.date}</span>
+                          <span style={{ fontSize: '0.8rem', opacity: 0.6, transform: isActive ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', display: 'inline-block' }}>▼</span>
+                        </div>
+                      </div>
+                      <div 
+                        className="notice-detail-content" 
+                        style={{
+                          maxHeight: isActive ? '1000px' : '0',
+                          opacity: isActive ? 1 : 0,
+                          overflow: 'hidden',
+                          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                          padding: isActive ? '1.5rem' : '0 1.5rem',
+                          backgroundColor: '#f9fafb',
+                          borderRadius: '8px',
+                          marginTop: isActive ? '0.5rem' : '0',
+                          marginBottom: isActive ? '1rem' : '0',
+                          fontSize: '0.95rem',
+                          lineHeight: '1.75',
+                          color: '#374151',
+                          textAlign: 'left',
+                          border: isActive ? '1px solid rgba(17, 42, 34, 0.08)' : 'none'
+                        }}
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {renderContentWithLinks(notice.content)}
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })
+              ) : (
+                <div style={{ 
+                  background: 'white', 
+                  padding: '4rem', 
+                  borderRadius: '24px', 
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.03)', 
+                  textAlign: 'center', 
+                  border: '1px solid rgba(0,0,0,0.05)',
+                  margin: '0 auto',
+                  maxWidth: '800px',
+                  width: '100%'
+                }}>
+                  <p style={{ fontSize: '1.2rem', color: '#666', margin: 0 }}>{t('noticePagePlaceholder')}</p>
+                </div>
+              );
+            })()}
           </div>
         </div>
       </section>

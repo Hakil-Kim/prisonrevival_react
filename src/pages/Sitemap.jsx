@@ -31,7 +31,7 @@ const Sitemap = () => {
     { id: 7, name: '프리즌 홈리스 사역', to: '/volunteer-programs#homeless', coords: { left: '22.1%', top: '46.9%', width: '11.6%', height: '10.7%' } },
     { id: 8, name: '엔젤트리', to: '/angeltree', coords: { left: '69.1%', top: '14.9%', width: '10.8%', height: '15.3%' } },
     { id: 9, name: '프리즌 발렌티어 참여하기', to: '/volunteer-guide', coords: { left: '86.3%', top: '35.9%', width: '12.0%', height: '12.8%' } },
-    { id: 10, name: '후원하기', to: '#', coords: { left: '62.9%', top: '33.3%', width: '8.1%', height: '11.6%' } },
+    { id: 10, name: '후원하기', to: '/programs#book-project', coords: { left: '62.9%', top: '33.3%', width: '8.1%', height: '11.6%' } },
     { id: 11, name: '간증&스토리', to: '/youtube#inside', coords: { left: '63.2%', top: '57.2%', width: '11.8%', height: '13.7%' } },
     { id: 12, name: '프리즌 미디어 센터', to: '/youtube', coords: { left: '81.9%', top: '68.8%', width: '13.1%', height: '11.7%' } },
     { id: 13, name: '발렌티어 지원하기', to: 'http://pf.kakao.com/_ptYAG/chat', coords: { left: '2.2%', top: '91.4%', width: '7.0%', height: '3.0%' } },

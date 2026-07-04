@@ -1,6 +1,20 @@
-export const NOTICE_DATA = {
-  "seum-receipt": {
-    id: "seum-receipt",
+/**
+ * [공지사항 추가 가이드]
+ * 1. 새로운 소식을 아래 배열 맨 위에 추가합니다. (최신순 노출)
+ * 2. 'id'는 중복 방지를 위한 10자리 고유 임의 문자열을 부여합니다.
+ *    - 생성 방법: F12를 눌러 브라우저 콘솔을 띄운 뒤 아래 한 줄을 실행하고, 출력된 값을 복사해 넣습니다.
+ *      Math.random().toString(36).substring(2, 12)
+ * 3. 'type'은 해당 공지사항의 분류 유형을 지정합니다:
+ *    - "general" : 일반공지사항
+ *    - "matching" : 매주 프리즌 매칭현황 보고
+ *    - "books" : 매월 성경책 및 선교사님책 후원 보고
+ *    - "revival-acc" : 프리즌 리바이벌 회계 보고
+ *    - "angeltree-acc" : 엔젤트리 공지 및 회계 보고
+ */
+export const NOTICE_DATA = [
+  {
+    id: "2ef64fe535",
+    type: "general",
     title: "세움에 후원해주신 분들께 기부금 영수증을 발급해드립니다",
     date: "2026.06.16",
     content: `안녕하세요. 아동복지실천회 세움입니다. 
@@ -20,8 +34,9 @@ export const NOTICE_DATA = {
 
 주님 안에서 오늘도 최고의 하루 보내세요!`
   },
-  "ai-profile": {
-    id: "ai-profile",
+  {
+    id: "aa787a344f",
+    type: "general",
     title: "🚨 AI 프로필 신청 마감 임박! 🚨",
     date: "2026.06.17",
     tagClass: "tag-monthly",
@@ -39,8 +54,9 @@ export const NOTICE_DATA = {
 📍오픈채팅방 입장
 https://invite.kakao.com/tc/gS2OI6UnTX`
   },
-  "meditation-matching-status": {
-    id: "meditation-matching-status",
+  {
+    id: "f381dacd30",
+    type: "matching",
     title: "프리즌 리바이벌 묵상수신 매칭 현황 (2026년 6월 19일 기준)",
     date: "2026.06.19",
     content: `프리즌 리바이벌 묵상수신 매칭 현황
@@ -69,4 +85,4 @@ https://invite.kakao.com/tc/gS2OI6UnTX`
 하도록 적극적인 홍보와 독려 
 부탁드립니다.`
   }
-};
+];
