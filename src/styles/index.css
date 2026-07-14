@@ -1931,6 +1931,14 @@ footer {
   opacity: 1;
 }
 
+#youtube-page .page-hero-bg {
+  background-image: linear-gradient(to bottom, rgba(17, 42, 34, 0.65) 0%, rgba(17, 42, 34, 0.85) 100%), url('/images/youtube_hero_bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
 #notice-page .section {
   padding-top: 2rem;
 }
@@ -3546,6 +3554,74 @@ footer {
 
   .youtube-content {
     text-align: center;
+  }
+}
+
+/* Shorts Layout */
+.shorts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.shorts-item {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.shorts-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.shorts-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 9/16;
+  object-fit: cover;
+}
+
+.shorts-item .play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background: rgba(184, 233, 134, 0.95);
+  color: #1a4d2e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 5;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.shorts-item:hover .play-icon {
+  background: var(--neon-green);
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .shorts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shorts-grid {
+    grid-template-columns: 1fr;
   }
 }
 

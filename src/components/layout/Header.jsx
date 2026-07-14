@@ -224,12 +224,15 @@ const Header = () => {
               <i className="dropdown-icon"></i>
             </Link>
             <ul className="dropdown-menu">
-              <li><Link onClick={closeMenu} to="/youtube#main">{t('navSubYtMain')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#channel">{t('navSubYtChannel')}</Link></li>
               <li><Link onClick={closeMenu} to="/youtube#intro">{t('navSubYtIntro')}</Link></li>
               <li><Link onClick={closeMenu} to="/youtube#anniversary">{t('navSubYtAnniversary')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#recommend">{t('navSubYtRecommend')}</Link></li>
               <li><Link onClick={closeMenu} to="/youtube#meditation">{t('navSubYtMeditation')}</Link></li>
-              <li><Link onClick={closeMenu} to="/youtube#inside">{t('navSubYtInside')}</Link></li>
-              <li><Link onClick={closeMenu} to="/youtube#angeltree">{t('navSubYtAngelTree')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#pastor-stories">{t('navSubYtPastorStories')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#shorts">{t('navSubYtStaffShorts')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#letters-prison">{t('navSubYtLettersPrison')}</Link></li>
+              <li><Link onClick={closeMenu} to="/youtube#letters-angeltree">{t('navSubYtLettersAngelTree')}</Link></li>
             </ul>
           </li>
           <li className={`dropdown ${activeDropdown === 'notice' ? 'mobile-active' : ''}`}>
