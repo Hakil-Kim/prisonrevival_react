@@ -5,7 +5,7 @@ import { CONFIG } from '../constants/config';
 import VideoModal from '../components/common/VideoModal';
 
 const YouTube = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   return (
@@ -24,7 +24,10 @@ const YouTube = () => {
         <section className="youtube-section fade-in" id="channel">
           <div className="youtube-grid">
             <div className="video-preview" onClick={() => window.open('https://www.youtube.com/@PrisonRevival', '_blank')}>
-              <img src="/images/youtube_poster.png" alt="Prison Revival & Angel Tree YouTube Poster" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/youtube_poster_ko.jpg' : '/images/youtube_poster_en.jpg'} 
+                alt="Prison Revival & Angel Tree YouTube Poster" 
+              />
             </div>
             <div className="youtube-content">
               <h3>{t('navSubYtChannel')}</h3>
@@ -75,7 +78,10 @@ const YouTube = () => {
               <button onClick={() => window.open('https://youtu.be/t5I2-Mn8shI', '_blank')} className="yt-btn">{t('ytPlayBtn')}</button>
             </div>
             <div className="video-preview" onClick={() => setSelectedVideo('t5I2-Mn8shI')}>
-              <img src="/images/yt_congrats.png" alt="3rd Anniversary Celebration" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/yt_congrats_ko.png' : '/images/yt_congrats_en.jpg'} 
+                alt="3rd Anniversary Celebration" 
+              />
               <span className="play-icon">▶</span>
             </div>
           </div>
@@ -85,7 +91,10 @@ const YouTube = () => {
         <section className="youtube-section fade-in" id="meditation">
           <div className="youtube-grid">
             <div className="video-preview" onClick={() => window.open('https://youtube.com/playlist?list=PLY8ptMzVZp7V4DsIzbPFEsJA73cu5hvcX&si=T9Ss2gOLeB4hlPTx', '_blank')}>
-              <img src="/images/yt_meditation_poster.png" alt="Meditation Poster" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/yt_meditation_poster_ko.jpg' : '/images/yt_meditation_poster_en.jpg'} 
+                alt="Meditation Poster" 
+              />
             </div>
             <div className="youtube-content">
               <h3>{t('navSubYtMeditation')}</h3>
@@ -106,7 +115,10 @@ const YouTube = () => {
               <button onClick={() => window.open('https://youtu.be/46SzM3kF2Y8', '_blank')} className="yt-btn">{t('ytPlayBtn')}</button>
             </div>
             <div className="video-preview" onClick={() => setSelectedVideo('46SzM3kF2Y8')}>
-              <img src="/images/yt_pastors_talk.png" alt="Partner Pastors Talkshow" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/yt_pastors_talk_ko.png' : '/images/yt_pastors_talk_en.jpg'} 
+                alt="Partner Pastors Talkshow" 
+              />
               <span className="play-icon">▶</span>
             </div>
           </div>
@@ -157,7 +169,10 @@ const YouTube = () => {
         <section className="youtube-section fade-in" id="letters-prison">
           <div className="youtube-grid">
             <div className="video-preview" onClick={() => window.open('https://www.youtube.com/playlist?list=PLY8ptMzVZp7V4DWZ4Zn5EpKohvzgGCIkV', '_blank')}>
-              <img src="/images/yt_prison_letters.png" alt="Grace Letters from prison" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/yt_prison_letters_ko.jpg' : '/images/yt_prison_letters_en.jpg'} 
+                alt="Grace Letters from prison" 
+              />
             </div>
             <div className="youtube-content">
               <h3>{t('navSubYtLettersPrison')}</h3>
@@ -173,7 +188,10 @@ const YouTube = () => {
         <section className="youtube-section fade-in" id="letters-angeltree">
           <div className="youtube-grid">
             <div className="video-preview" onClick={() => window.open('https://www.youtube.com/playlist?list=PLY8ptMzVZp7VbyoLKBaEJV0XkCLp2PTzQ', '_blank')}>
-              <img src="/images/yt_angeltree_letters.png" alt="Angel Tree Touching Letters" />
+              <img 
+                src={i18n.language === 'ko' ? '/images/yt_angeltree_letters_ko.jpg' : '/images/yt_angeltree_letters_en.jpg'} 
+                alt="Angel Tree Touching Letters" 
+              />
             </div>
             <div className="youtube-content">
               <h3>{t('navSubYtLettersAngelTree')}</h3>
