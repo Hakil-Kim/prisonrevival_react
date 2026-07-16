@@ -2892,9 +2892,9 @@ footer {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
-  padding: 4rem 0;
+  padding: 0;
 }
 
 .contact-card {
@@ -3002,6 +3002,12 @@ footer {
   font-weight: 500;
   word-break: break-all;
   line-height: 1.4;
+}
+
+@media (max-width: 992px) {
+  .contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 768px) {
@@ -3638,11 +3644,40 @@ footer {
   margin-bottom: 1rem;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-top: 4rem;
+/* ContactManagers Page Custom Hero Background and Spacing */
+#contact-managers-page .page-hero-bg {
+  background-image: linear-gradient(to bottom, rgba(17, 42, 34, 0.7) 0%, rgba(17, 42, 34, 0.9) 100%), url('/images/intro_hero_bg_abstract.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+
+#contact-managers-page .page-hero {
+  margin-bottom: 0;
+}
+
+#contact-managers-page .section {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
+#contact-managers-page .contact-grid,
+#intro-page .contact-grid {
+  margin-top: 0;
+  margin-bottom: 2.4rem;
+  gap: 1.2rem;
+  padding: 0;
+}
+
+#contact-managers-page .contact-grid:first-of-type,
+#intro-page .contact-grid:first-of-type {
+  margin-top: 2.5rem;
+}
+
+#contact-managers-page .contact-card,
+#intro-page .contact-card {
+  padding: 1.6rem 2rem;
 }
 
 .contact-card {

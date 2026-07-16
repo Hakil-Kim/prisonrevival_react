@@ -95,103 +95,105 @@ export const CONFIG = {
   ],
 
   contactManagers: [
-    {
-      roleKey: "managerRole1",
-      orgKey: "managerOrg1",
-      nameKey: "managerName1",
-      kakao: "Prisonrevival",
-      email: "21davidoh@gmail.com",
-      phone: "+82-10-5137-8822",
-      phoneNoteKey: "contactPhoneNote"
-    },
-    {
-      roleKey: "managerRole2",
-      nameKey: "managerName2",
-      kakao: "labella76",
-      email: "labella76@daum.net",
-      phone: "+82-10-2634-4656",
-      phoneNoteKey: "contactPhoneNote"
-    },
-    {
-      roleKey: "managerRole3",
-      nameKey: "managerName3",
-      kakao: "soojma",
-      email: "soojma@naver.com",
-      phone: "+82-10-9960-0994",
-      phoneNoteKey: "contactPhoneNote"
-    },
-    {
-      roleKey: "managerRole4",
-      nameKey: "managerName4",
-      kakao: "youngestddal",
-      email: "ckdm0222@naver.com"
-    },
-    {
-      roleKey: "managerRole5",
-      nameKey: "managerName5",
-      kakao: "grenge",
-      email: "grenge@hanmail.net"
-    },
-    {
-      roleKey: "managerRole6",
-      nameKey: "managerName6",
-      kakao: "issue0414",
-      email: "cosmosab2000@gmail.com"
-    },
-    {
-      roleKey: "managerRole7",
-      nameKey: "managerName7",
-      kakao: "soda633",
-      email: "soda633@gmail.com"
-    },
-    {
-      roleKey: "managerRole8",
-      nameKey: "managerName8",
-      kakao: "",
-      email: ""
-    },
-    {
-      roleKey: "managerRole9",
-      nameKey: "managerName9",
-      kakao: "hyunna97",
-      email: "cjuyeon33@nate.com"
-    },
-    {
-      roleKey: "managerRole10",
-      nameKey: "managerName10",
-      kakao: "",
-      email: ""
-    },
-    {
-      roleKey: "managerRole11",
-      nameKey: "managerName11",
-      kakao: "",
-      email: ""
-    },
-    {
-      roleKey: "managerRole12",
-      nameKey: "managerName12",
-      kakao: "",
-      email: ""
-    },
-    {
-      roleKey: "managerRole13",
-      nameKey: "managerName13",
-      kakao: "ginjloveg",
-      email: "ginjloveg@hanmail.net"
-    },
-    {
-      roleKey: "managerRole14",
-      nameKey: "managerName14",
-      kakao: "",
-      email: ""
-    },
-    {
-      roleKey: "managerRole15",
-      nameKey: "managerName15",
-      kakao: "",
-      email: ""
-    }
-  ]
-};
+  {
+    "roleKey": "managerRole1",
+    "nameKey": "managerName1",
+    "kakao": "Prisonrevival",
+    "email": "21davidoh@gmail.com",
+    "phone": "+82-10-5137-8822",
+    "phoneNoteKey": "contactPhoneNote"
+  },
+  {
+    "roleKey": "managerRole2",
+    "nameKey": "managerName2",
+    "kakao": "labella76",
+    "email": "labella76@daum.net",
+    "phone": "+82-10-2634-4656",
+    "phoneNoteKey": "contactPhoneNote"
+  },
+  {
+    "roleKey": "managerRole3",
+    "nameKey": "managerName3",
+    "kakao": "youngestddal",
+    "email": "ckdm0222@naver.com"
+  },
+  {
+    "roleKey": "managerRole4",
+    "nameKey": "managerName4",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole5",
+    "nameKey": "managerName5",
+    "kakao": "grenge",
+    "email": "grenge@hanmail.net"
+  },
+  {
+    "roleKey": "managerRole6",
+    "nameKey": "managerName6",
+    "kakao": "issue0414",
+    "email": "cosmosab2000@gmail.com"
+  },
+  {
+    "roleKey": "managerRole7",
+    "nameKey": "managerName7",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole8",
+    "nameKey": "managerName8",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole9",
+    "nameKey": "managerName9",
+    "kakao": "hyunna97",
+    "email": "cjuyeon33@nate.com"
+  },
+  {
+    "roleKey": "managerRole10",
+    "nameKey": "managerName10",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole11",
+    "nameKey": "managerName11",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole12",
+    "nameKey": "managerName12",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole13",
+    "nameKey": "managerName13",
+    "kakao": "ginjloveg",
+    "email": "ginjloveg@hanmail.net"
+  },
+  {
+    "roleKey": "managerRole14",
+    "nameKey": "managerName14",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole15",
+    "nameKey": "managerName15",
+    "kakao": "",
+    "email": ""
+  },
+  {
+    "roleKey": "managerRole16",
+    "nameKey": "managerName16",
+    "kakao": "",
+    "email": ""
+  }
+]};
 

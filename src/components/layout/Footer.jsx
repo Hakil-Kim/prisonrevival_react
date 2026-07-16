@@ -25,21 +25,13 @@ const Footer = () => {
 
           <div className="footer-col footer-contact">
             <h4>{t('footerContactTitle')}</h4>
-            <div className="footer-contact-item">
+            <a href="http://pf.kakao.com/_ptYAG/chat" target="_blank" rel="noopener noreferrer" className="footer-contact-item footer-link">
               <span className="footer-icon">💬</span>
               <span>{t('footerContactKakao')}</span>
-            </div>
+            </a>
             <div className="footer-contact-item">
               <span className="footer-icon">✉️</span>
               <span>E Mail: 21davidoh@gmail.com</span>
-            </div>
-            <div className="footer-contact-item">
-              <span className="footer-icon">📱</span>
-              <span>{t('footerContactPhone')}</span>
-            </div>
-            <div className="footer-contact-item">
-              <span className="footer-icon">👤</span>
-              <span>{t('footerContactName')}</span>
             </div>
             <Link to="/contact-managers" className="footer-contact-item footer-link">
               <span className="footer-icon">📞</span>
