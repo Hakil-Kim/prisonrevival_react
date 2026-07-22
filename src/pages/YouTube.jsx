@@ -33,7 +33,7 @@ const YouTube = () => {
               <h3>{t('navSubYtChannel')}</h3>
               <p style={{ whiteSpace: 'pre-line' }}>{t('ytChannelDesc')}</p>
               <button onClick={() => window.open('https://www.youtube.com/@PrisonRevival', '_blank')} className="yt-btn">
-                채널 바로가기
+                {t('ytChannelBtn')}
               </button>
             </div>
           </div>
@@ -131,10 +131,10 @@ const YouTube = () => {
               {t('navSubYtStaffShorts')}
             </h2>
             <p style={{ fontSize: '1.1rem', color: '#4b5563', maxWidth: '700px', margin: '0 auto 2rem', lineHeight: '1.8' }}>
-              프리즌 리바이벌 스탭들의 생생한 고백과 다양한 은혜를 짧은 쇼츠(Shorts) 영상으로 만나보세요.
+              {t('ytStaffShortsDesc')}
             </p>
             <button onClick={() => window.open('https://www.youtube.com/@PrisonRevival/shorts', '_blank')} className="yt-btn">
-              쇼츠 채널 바로가기
+              {t('ytShortsChannelBtn')}
             </button>
           </div>
 
