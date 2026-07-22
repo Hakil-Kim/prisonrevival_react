@@ -120,8 +120,8 @@ export const CONFIG = {
   {
     "roleKey": "managerRole4",
     "nameKey": "managerName4",
-    "kakao": "",
-    "email": ""
+    "kakao": "ysol0109",
+    "email": "mydog0109@naver.com"
   },
   {
     "roleKey": "managerRole5",
@@ -138,14 +138,14 @@ export const CONFIG = {
   {
     "roleKey": "managerRole7",
     "nameKey": "managerName7",
-    "kakao": "",
-    "email": ""
+    "kakao": "0503cchang@hanmail.net",
+    "email": "0503cchang@hanmail.net"
   },
   {
     "roleKey": "managerRole8",
     "nameKey": "managerName8",
-    "kakao": "",
-    "email": ""
+    "kakao": "luvsoovin",
+    "email": "hjinsbin@gmail.com"
   },
   {
     "roleKey": "managerRole9",
@@ -156,20 +156,20 @@ export const CONFIG = {
   {
     "roleKey": "managerRole10",
     "nameKey": "managerName10",
-    "kakao": "",
-    "email": ""
+    "kakao": "loveg8413@naver.com",
+    "email": "loveg8413@naver.com"
   },
   {
     "roleKey": "managerRole11",
     "nameKey": "managerName11",
-    "kakao": "",
-    "email": ""
+    "kakao": "hakil.kim@kakao.com",
+    "email": "hakil.kim@gmail.com"
   },
   {
     "roleKey": "managerRole12",
     "nameKey": "managerName12",
-    "kakao": "",
-    "email": ""
+    "kakao": "rladmstjs76@gmail.com",
+    "email": "lglory@naver.com"
   },
   {
     "roleKey": "managerRole13",
@@ -180,20 +180,20 @@ export const CONFIG = {
   {
     "roleKey": "managerRole14",
     "nameKey": "managerName14",
-    "kakao": "",
-    "email": ""
+    "kakao": "yio0822",
+    "email": "yio0822@naver.com"
   },
   {
     "roleKey": "managerRole15",
     "nameKey": "managerName15",
-    "kakao": "",
-    "email": ""
+    "kakao": "deuk1004",
+    "email": "sunny@calebmission.com"
   },
   {
     "roleKey": "managerRole16",
     "nameKey": "managerName16",
-    "kakao": "",
-    "email": ""
+    "kakao": "heetamin22",
+    "email": "Upfly0505@gmail.com"
   }
 ]};
 
