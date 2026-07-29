@@ -16,11 +16,19 @@ const resources = {
   tl: { translation: tl }
 };
 
+// 브라우저 locale 감지 및 지원 언어 폴백 로직
+const getBrowserLanguage = () => {
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  const primaryLang = browserLang.split('-')[0];
+  const supportedLanguages = ['ko', 'en', 'zh', 'es', 'pt', 'tl'];
+  return supportedLanguages.includes(primaryLang) ? primaryLang : 'en';
+};
+
 i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'ko', // 기본 언어
+    lng: getBrowserLanguage(),
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false // 리액트는 이미 xss 방지를 하므로 false 설정
