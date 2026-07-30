@@ -310,8 +310,28 @@ header.scrolled .header-logo-icon {
   height: 38px;
 }
 
+.lang-selector {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.lang-flag-icon {
+  position: absolute;
+  left: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .lang-selector select {
-  padding: 0.5rem 2.2rem 0.5rem 1.2rem;
+  padding: 0.5rem 2.2rem 0.5rem 2.4rem;
   background-color: white;
   border: 1px solid rgba(17, 42, 34, 0.1);
   color: var(--dark-green);

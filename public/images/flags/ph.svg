@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600">
+  <rect width="1200" height="300" fill="#0038a8"/>
+  <rect y="300" width="1200" height="300" fill="#ce1126"/>
+  <polygon points="0,0 519.6,300 0,600" fill="#ffffff"/>
+  <g transform="translate(173.2, 300)" fill="#fcd116">
+    <circle cx="0" cy="0" r="50"/>
+    <g id="ray"><polygon points="0,-90 10,-55 0,-60 -10,-55"/></g>
+    <use href="#ray" transform="rotate(45)"/>
+    <use href="#ray" transform="rotate(90)"/>
+    <use href="#ray" transform="rotate(135)"/>
+    <use href="#ray" transform="rotate(180)"/>
+    <use href="#ray" transform="rotate(225)"/>
+    <use href="#ray" transform="rotate(270)"/>
+    <use href="#ray" transform="rotate(315)"/>
+  </g>
+  <g fill="#fcd116">
+    <polygon points="40,50 45,65 60,65 48,75 52,90 40,80 28,90 32,75 20,65 35,65"/>
+    <polygon points="40,550 45,535 60,535 48,525 52,510 40,520 28,510 32,525 20,535 35,535"/>
+    <polygon points="460,300 445,305 445,320 435,308 420,312 430,300 420,288 435,292 445,280 445,295"/>
+  </g>
+</svg>

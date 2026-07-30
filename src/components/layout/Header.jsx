@@ -91,18 +91,33 @@ const Header = () => {
     closeMenu();
   };
 
-  const renderLangSelector = () => (
-    <div className="lang-selector">
-      <select onChange={handleLangChange} value={i18n.language}>
-        <option value="ko">한국어</option>
-        <option value="en">English</option>
-        <option value="zh">中文</option>
-        <option value="es">Español</option>
-        <option value="pt">Português</option>
-        <option value="tl">Tagalog</option>
-      </select>
-    </div>
-  );
+  const FLAG_MAP = {
+    ko: '/images/flags/kr.svg',
+    en: '/images/flags/us.svg',
+    zh: '/images/flags/cn.svg',
+    es: '/images/flags/es.svg',
+    pt: '/images/flags/pt.svg',
+    tl: '/images/flags/ph.svg'
+  };
+
+  const renderLangSelector = () => {
+    const currentLang = i18n.language ? i18n.language.split('-')[0] : 'ko';
+    const flagSrc = FLAG_MAP[currentLang] || FLAG_MAP.en;
+
+    return (
+      <div className="lang-selector">
+        <img src={flagSrc} alt={currentLang} className="lang-flag-icon" />
+        <select onChange={handleLangChange} value={i18n.language}>
+          <option value="ko">한국어</option>
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+          <option value="es">Español</option>
+          <option value="pt">Português</option>
+          <option value="tl">Tagalog</option>
+        </select>
+      </div>
+    );
+  };
 
   return (
     <header 
