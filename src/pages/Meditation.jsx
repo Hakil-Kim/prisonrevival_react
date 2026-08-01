@@ -369,8 +369,9 @@ const Meditation = () => {
             </div>
             <div className="bible-reading-action" style={{ marginTop: '2.5rem' }}>
               <a
-                href={CONFIG.bibleReadingLink?.[currentLang] || CONFIG.bibleReadingLink?.ko}
+                href={CONFIG.bibleReadingLink?.[currentLang] || CONFIG.bibleReadingLink?.en}
                 target="_blank"
+                rel="noopener noreferrer"
                 className="primary-btn bible-reading-download-btn"
                 style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
               >
