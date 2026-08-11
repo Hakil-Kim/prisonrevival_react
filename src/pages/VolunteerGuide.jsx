@@ -8,7 +8,7 @@ const VolunteerGuide = () => {
   const { t, i18n } = useTranslation();
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const volunteerImages = Array.from({ length: 56 }, (_, i) => {
+  const volunteerImages = Array.from({ length: 72 }, (_, i) => {
     const num = String(i + 1).padStart(3, '0');
     return `${num}.jpg`;
   });
