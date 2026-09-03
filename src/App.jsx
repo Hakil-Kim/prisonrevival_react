@@ -15,7 +15,6 @@ import ContactManagers from './pages/ContactManagers';
 import Admin from './pages/Admin';
 import Sitemap from './pages/Sitemap';
 import NotFound from './pages/NotFound';
-import { Analytics } from '@vercel/analytics/react';
 import './styles/index.css';
 
 import { useTranslation } from 'react-i18next';
@@ -225,7 +224,6 @@ const App = () => {
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />
-        <Analytics />
       </div>
     </Router>
   );
