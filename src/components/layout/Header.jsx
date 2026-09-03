@@ -193,6 +193,7 @@ const Header = () => {
               <li><Link onClick={closeMenu} to="/angeltree#manna-seum">{t('navSubMannaSeum')}</Link></li>
               <li><Link onClick={closeMenu} to="/angeltree#manna-angel">{t('navSubMannaAngel')}</Link></li>
               <li><Link onClick={closeMenu} to="/angeltree#prison-angel-guide">{t('navSubPrisonAngelGuide')}</Link></li>
+              <li><Link onClick={closeMenu} to="/angeltree#manna-bridge-news">{t('navSubMannaBridgeNews')}</Link></li>
             </ul>
           </li>
           <li className={`dropdown ${activeDropdown === 'programs' ? 'mobile-active' : ''}`}>

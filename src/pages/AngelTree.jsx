@@ -1,12 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import ImageModal from '../components/common/ImageModal';
 import { ArrowRight } from 'lucide-react';
+import { MANNA_BRIDGE_NEWS_DATA } from '../constants/mannaBridgeNewsData';
 
 const AngelTree = () => {
   const { t } = useTranslation();
   const [selectedImage, setSelectedImage] = useState(null);
+  const [activeNoticeId, setActiveNoticeId] = useState(null);
+  const newsBoardRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (newsBoardRef.current && !newsBoardRef.current.contains(e.target)) {
+        setActiveNoticeId(null);
+      }
+    };
+    document.addEventListener('click', handleOutsideClick);
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, []);
+
+  const renderContentWithLinks = (text) => {
+    if (!text) return null;
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    return text.split('\n').map((line, i) => {
+      const parts = line.split(urlRegex);
+      return (
+        <span key={i}>
+          {parts.map((part, j) => {
+            if (urlRegex.test(part)) {
+              return (
+                <a 
+                  key={j} 
+                  href={part} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  style={{ color: '#047857', fontWeight: 'bold', textDecoration: 'underline' }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {part}
+                </a>
+              );
+            }
+            return part;
+          })}
+          <br />
+        </span>
+      );
+    });
+  };
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
@@ -163,6 +208,88 @@ const AngelTree = () => {
               display: 'block'
             }} 
           />
+        </div>
+      </section>
+
+      {/* 6. Angel Tree : Manna Bridge News */}
+      <section id="manna-bridge-news" className="guide-section scroll-reveal" style={{ textAlign: 'center' }}>
+        <h2 className="sub-section-title" style={{ textAlign: 'center', marginBottom: '3rem' }}>{t('navSubMannaBridgeNews')}</h2>
+        <div className="notice-board" ref={newsBoardRef} style={{ maxWidth: '800px', margin: '0 auto' }}>
+          {MANNA_BRIDGE_NEWS_DATA.map((news, index) => {
+            const isActive = activeNoticeId === news.id;
+            return (
+              <div 
+                key={news.id}
+                className="notice-item-wrapper"
+                style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  width: '100%',
+                  marginTop: index > 0 ? '0.5rem' : '0' 
+                }}
+              >
+                <div 
+                  className={`notice-item ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveNoticeId(isActive ? null : news.id)}
+                  style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
+                >
+                  <div className="notice-left">
+                    <span className="notice-dot"></span>
+                    <span>{news.title}</span>
+                  </div>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                    <span className="notice-tag" style={{ whiteSpace: 'nowrap' }}>{news.date}</span>
+                    <span style={{ fontSize: '0.8rem', opacity: 0.6, transform: isActive ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', display: 'inline-block' }}>▼</span>
+                  </div>
+                </div>
+                <div 
+                  className="notice-detail-content" 
+                  style={{
+                    maxHeight: isActive ? '20000px' : '0',
+                    opacity: isActive ? 1 : 0,
+                    overflow: 'hidden',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    padding: isActive ? '1.5rem 1.5rem 2rem 1.5rem' : '0 1.5rem',
+                    backgroundColor: '#f9fafb',
+                    borderRadius: '8px',
+                    marginTop: isActive ? '0.5rem' : '0',
+                    marginBottom: isActive ? '1rem' : '0',
+                    fontSize: '0.95rem',
+                    lineHeight: '1.75',
+                    color: '#374151',
+                    textAlign: 'left',
+                    border: isActive ? '1px solid rgba(17, 42, 34, 0.08)' : 'none'
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {renderContentWithLinks(news.content)}
+                  {news.images && news.images.length > 0 && (
+                    <div style={{ marginTop: '2rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+                      {news.images.map((imgSrc, imgIdx) => (
+                        <div 
+                          key={imgIdx} 
+                          style={{ 
+                            cursor: 'zoom-in', 
+                            maxWidth: '100%', 
+                            borderRadius: '12px', 
+                            overflow: 'hidden',
+                            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' 
+                          }}
+                          onClick={() => handleImageClick(imgSrc)}
+                        >
+                          <img 
+                            src={imgSrc} 
+                            alt="소식 첨부 이미지" 
+                            style={{ width: '100%', height: 'auto', display: 'block' }} 
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 
