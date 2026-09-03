@@ -2,11 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NOTICE_DATA } from '../constants/noticeData';
+import ImageModal from '../components/common/ImageModal';
 
 const Notice = () => {
   const { type } = useParams();
   const { t } = useTranslation();
   const [activeNoticeId, setActiveNoticeId] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
   const noticeBoardRef = useRef(null);
 
   useEffect(() => {
@@ -20,6 +22,10 @@ const Notice = () => {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+
+  const handleImageClick = (src) => {
+    setSelectedImage(src);
+  };
 
   const renderContentWithLinks = (text) => {
     if (!text) return null;
@@ -114,7 +120,7 @@ const Notice = () => {
                           opacity: isActive ? 1 : 0,
                           overflow: 'hidden',
                           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          padding: isActive ? '1.5rem' : '0 1.5rem',
+                          padding: isActive ? '1.5rem 1.5rem 2rem 1.5rem' : '0 1.5rem',
                           backgroundColor: '#f9fafb',
                           borderRadius: '8px',
                           marginTop: isActive ? '0.5rem' : '0',
@@ -128,6 +134,29 @@ const Notice = () => {
                         onClick={(e) => e.stopPropagation()}
                       >
                         {renderContentWithLinks(notice.content)}
+                        {notice.images && notice.images.length > 0 && (
+                          <div style={{ marginTop: '2rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+                            {notice.images.map((imgSrc, imgIdx) => (
+                              <div 
+                                key={imgIdx} 
+                                style={{ 
+                                  cursor: 'zoom-in', 
+                                  maxWidth: '100%', 
+                                  borderRadius: '12px', 
+                                  overflow: 'hidden',
+                                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' 
+                                }}
+                                onClick={() => handleImageClick(imgSrc)}
+                              >
+                                <img 
+                                  src={imgSrc} 
+                                  alt="공지 첨부 이미지" 
+                                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   );
@@ -154,6 +183,7 @@ const Notice = () => {
           <Link to="/" className="secondary-btn">{t('backToHome')}</Link>
         </div>
       </div>
+      <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
     </main>
   );
 };

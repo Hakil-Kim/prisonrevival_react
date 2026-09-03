@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import VideoModal from '../components/common/VideoModal';
 import AlertModal from '../components/common/AlertModal';
+import ImageModal from '../components/common/ImageModal';
 import { CONFIG } from '../constants/config';
 import { MEDITATION_DATES } from '../constants/meditation_data';
 import { getMeditationData } from '../services/meditationService';
@@ -13,11 +14,16 @@ const Home = () => {
   const navigate = useNavigate();
   const [modalData, setModalData] = useState({ isOpen: false, videoId: '' });
   const [alertMessage, setAlertMessage] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
   const [recentSaturdays, setRecentSaturdays] = useState([]);
   const [meditationDates, setMeditationDates] = useState({});
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeNoticeId, setActiveNoticeId] = useState(null);
   const noticeBoardRef = useRef(null);
+
+  const handleImageClick = (src) => {
+    setSelectedImage(src);
+  };
 
   useEffect(() => {
     const handleOutsideClick = (e) => {
@@ -574,11 +580,11 @@ const Home = () => {
                       <div 
                         className="notice-detail-content" 
                         style={{
-                          maxHeight: isActive ? '1000px' : '0',
+                          maxHeight: isActive ? '20000px' : '0',
                           opacity: isActive ? 1 : 0,
                           overflow: 'hidden',
                           transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                          padding: isActive ? '1.5rem' : '0 1.5rem',
+                          padding: isActive ? '1.5rem 1.5rem 2rem 1.5rem' : '0 1.5rem',
                           backgroundColor: '#f9fafb',
                           borderRadius: '8px',
                           marginTop: isActive ? '0.5rem' : '0',
@@ -592,6 +598,29 @@ const Home = () => {
                         onClick={(e) => e.stopPropagation()}
                       >
                         {renderContentWithLinks(notice.content)}
+                        {notice.images && notice.images.length > 0 && (
+                          <div style={{ marginTop: '2rem', marginBottom: '1rem', display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: 'center' }}>
+                            {notice.images.map((imgSrc, imgIdx) => (
+                              <div 
+                                key={imgIdx} 
+                                style={{ 
+                                  cursor: 'zoom-in', 
+                                  maxWidth: '100%', 
+                                  borderRadius: '12px', 
+                                  overflow: 'hidden',
+                                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)' 
+                                }}
+                                onClick={() => handleImageClick(imgSrc)}
+                              >
+                                <img 
+                                  src={imgSrc} 
+                                  alt="공지 첨부 이미지" 
+                                  style={{ width: '100%', height: 'auto', display: 'block' }} 
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   );
@@ -626,6 +655,10 @@ const Home = () => {
         isOpen={!!alertMessage} 
         message={alertMessage} 
         onClose={() => setAlertMessage('')} 
+      />
+      <ImageModal 
+        src={selectedImage} 
+        onClose={() => setSelectedImage(null)} 
       />
     </main>
   );

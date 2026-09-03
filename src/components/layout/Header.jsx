@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
+import { NOTICE_DATA } from '../../constants/noticeData';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+
+  const hasRecentNotice = (type = null) => {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    return NOTICE_DATA.some(notice => {
+      if (type && notice.type !== type) return false;
+      const noticeDate = new Date(notice.date.replace(/\./g, '-'));
+      return noticeDate >= oneWeekAgo;
+    });
+  };
 
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -255,15 +267,17 @@ const Header = () => {
           <li className={`dropdown ${activeDropdown === 'notice' ? 'mobile-active' : ''}`}>
             <Link onClick={(e) => toggleDropdown('notice', e)} to="/notice/general" className="dropdown-toggle">
               <span style={{ display: 'inline-flex', alignItems: 'center' }}>
-                <span style={{
-                  display: 'inline-block',
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  backgroundColor: '#ef4444',
-                  marginRight: '4px',
-                  flexShrink: 0
-                }} />
+                {hasRecentNotice() && (
+                  <span style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: '#ef4444',
+                    marginRight: '6px',
+                    flexShrink: 0
+                  }} />
+                )}
                 <span>{t('navNotice')}</span>
               </span>
               <i className="dropdown-icon"></i>
@@ -271,22 +285,84 @@ const Header = () => {
             <ul className="dropdown-menu">
               <li>
                 <Link onClick={closeMenu} to="/notice/general" style={{ display: 'flex', alignItems: 'center' }}>
-                  <span style={{
-                    display: 'inline-block',
-                    width: '6px',
-                    height: '6px',
-                    borderRadius: '50%',
-                    backgroundColor: '#ef4444',
-                    marginRight: '4px',
-                    flexShrink: 0
-                  }} />
+                  {hasRecentNotice('general') && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
                   <span>{t('navSubGeneral')}</span>
                 </Link>
               </li>
-              <li><Link onClick={closeMenu} to="/notice/matching">{t('navSubMatching')}</Link></li>
-              <li><Link onClick={closeMenu} to="/notice/books">{t('navSubBookSupport')}</Link></li>
-              <li><Link onClick={closeMenu} to="/notice/revival-acc">{t('navSubRevivalAccounting')}</Link></li>
-              <li><Link onClick={closeMenu} to="/notice/angeltree-acc">{t('navSubAngelAccounting')}</Link></li>
+              <li>
+                <Link onClick={closeMenu} to="/notice/matching" style={{ display: 'flex', alignItems: 'center' }}>
+                  {hasRecentNotice('matching') && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
+                  <span>{t('navSubMatching')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={closeMenu} to="/notice/books" style={{ display: 'flex', alignItems: 'center' }}>
+                  {hasRecentNotice('books') && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
+                  <span>{t('navSubBookSupport')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={closeMenu} to="/notice/revival-acc" style={{ display: 'flex', alignItems: 'center' }}>
+                  {hasRecentNotice('revival-acc') && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
+                  <span>{t('navSubRevivalAccounting')}</span>
+                </Link>
+              </li>
+              <li>
+                <Link onClick={closeMenu} to="/notice/angeltree-acc" style={{ display: 'flex', alignItems: 'center' }}>
+                  {hasRecentNotice('angeltree-acc') && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
+                  <span>{t('navSubAngelAccounting')}</span>
+                </Link>
+              </li>
             </ul>
           </li>
 
