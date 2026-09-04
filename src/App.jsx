@@ -19,6 +19,9 @@ import './styles/index.css';
 
 import { useTranslation } from 'react-i18next';
 
+// HTML 태그 제거 헬퍼 함수 (document.title 및 meta content 정제용)
+const cleanHtmlText = (str) => (str ? str.replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim() : '');
+
 // ScrollToTop component to reset scroll on route change
 const ScrollToTop = () => {
   const { pathname, hash } = useLocation();
@@ -116,7 +119,8 @@ const ScrollToTop = () => {
       pageTitle = `${t('navSitemap')} - ${baseSiteTitle}`;
     }
     
-    document.title = pageTitle;
+    const sanitizedTitle = cleanHtmlText(pageTitle);
+    document.title = sanitizedTitle;
 
     // Dynamic Description (meta description & og:description)
     let rawDesc = t('heroDesc');
@@ -141,7 +145,7 @@ const ScrollToTop = () => {
     }
 
     const englishBaseDesc = "Prison Revival & Angel Tree is a lay gospel organization spreading the Gospel to the incarcerated.";
-    const pageDesc = `${englishBaseDesc} | ${rawDesc}`;
+    const pageDesc = cleanHtmlText(`${englishBaseDesc} | ${rawDesc}`);
 
     const descMeta = document.querySelector('meta[name="description"]');
     if (descMeta) descMeta.setAttribute('content', pageDesc);
@@ -150,7 +154,7 @@ const ScrollToTop = () => {
     if (ogDescMeta) ogDescMeta.setAttribute('content', pageDesc);
 
     const ogTitleMeta = document.querySelector('meta[property="og:title"]');
-    if (ogTitleMeta) ogTitleMeta.setAttribute('content', pageTitle);
+    if (ogTitleMeta) ogTitleMeta.setAttribute('content', sanitizedTitle);
 
     // Dynamic Canonical URL & og:url Tag updates for SEO optimization
     const canonicalUrl = `https://prisonrevival.org${pathname}`;
