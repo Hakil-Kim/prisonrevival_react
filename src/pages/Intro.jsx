@@ -449,7 +449,7 @@ const Intro = () => {
               data-tooltip={t('partnerAlliance')}
               className="partner-banner-link"
             >
-              <img src="/images/partners/partner_banner_alliance.png" alt={t('partnerAlliance')} />
+              <img src={t('partnerBannerAlliance')} alt={t('partnerAlliance')} />
             </a>
             <a 
               href={CONFIG.introLinks.partners.fellowship} 
@@ -458,7 +458,7 @@ const Intro = () => {
               data-tooltip={t('partnerFellowship')}
               className="partner-banner-link"
             >
-              <img src="/images/partners/partner_banner_fellowship.png" alt={t('partnerFellowship')} />
+              <img src={t('partnerBannerFellowship')} alt={t('partnerFellowship')} />
             </a>
             <a 
               href={CONFIG.introLinks.partners.omked} 
