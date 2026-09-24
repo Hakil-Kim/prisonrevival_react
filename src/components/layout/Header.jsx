@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useLocation } from 'react-router-dom';
 import { NOTICE_DATA } from '../../constants/noticeData';
+import { MANNA_BRIDGE_NEWS_DATA } from '../../constants/mannaBridgeNewsData';
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -16,6 +17,16 @@ const Header = () => {
       if (type && notice.type !== type) return false;
       const noticeDate = new Date(notice.date.replace(/\./g, '-'));
       return noticeDate >= oneWeekAgo;
+    });
+  };
+
+  const hasRecentMannaBridgeNews = () => {
+    const oneWeekAgo = new Date();
+    oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+
+    return MANNA_BRIDGE_NEWS_DATA.some(news => {
+      const newsDate = new Date(news.date.replace(/\./g, '-'));
+      return newsDate >= oneWeekAgo;
     });
   };
 
@@ -196,7 +207,20 @@ const Header = () => {
           </li>
           <li className={`dropdown ${activeDropdown === 'angeltree' ? 'mobile-active' : ''}`}>
             <Link onClick={(e) => toggleDropdown('angeltree', e)} to="/angeltree" className="dropdown-toggle">
-              <span>{t('navAngelTree')}</span>
+              <span style={{ display: 'inline-flex', alignItems: 'center' }}>
+                {hasRecentMannaBridgeNews() && (
+                  <span style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: '#ef4444',
+                    marginRight: '6px',
+                    flexShrink: 0
+                  }} />
+                )}
+                <span>{t('navAngelTree')}</span>
+              </span>
               <i className="dropdown-icon"></i>
             </Link>
             <ul className="dropdown-menu">
@@ -205,7 +229,22 @@ const Header = () => {
               <li><Link onClick={closeMenu} to="/angeltree#manna-seum">{t('navSubMannaSeum')}</Link></li>
               <li><Link onClick={closeMenu} to="/angeltree#manna-angel">{t('navSubMannaAngel')}</Link></li>
               <li><Link onClick={closeMenu} to="/angeltree#prison-angel-guide">{t('navSubPrisonAngelGuide')}</Link></li>
-              <li><Link onClick={closeMenu} to="/angeltree#manna-bridge-news">{t('navSubMannaBridgeNews')}</Link></li>
+              <li>
+                <Link onClick={closeMenu} to="/angeltree#manna-bridge-news" style={{ display: 'flex', alignItems: 'center' }}>
+                  {hasRecentMannaBridgeNews() && (
+                    <span style={{
+                      display: 'inline-block',
+                      width: '6px',
+                      height: '6px',
+                      borderRadius: '50%',
+                      backgroundColor: '#ef4444',
+                      marginRight: '6px',
+                      flexShrink: 0
+                    }} />
+                  )}
+                  <span>{t('navSubMannaBridgeNews')}</span>
+                </Link>
+              </li>
             </ul>
           </li>
           <li className={`dropdown ${activeDropdown === 'programs' ? 'mobile-active' : ''}`}>

@@ -8,6 +8,7 @@ import { CONFIG } from '../constants/config';
 import { MEDITATION_DATES } from '../constants/meditation_data';
 import { getMeditationData } from '../services/meditationService';
 import { NOTICE_DATA } from '../constants/noticeData';
+import { MANNA_BRIDGE_NEWS_DATA } from '../constants/mannaBridgeNewsData';
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -542,7 +543,9 @@ const Home = () => {
               const thirtyDaysAgo = new Date();
               thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
-              const filtered = NOTICE_DATA
+              const allNotices = [...NOTICE_DATA, ...MANNA_BRIDGE_NEWS_DATA];
+
+              const filtered = allNotices
                 .filter(notice => {
                   const noticeDate = new Date(notice.date.replace(/\./g, '-'));
                   return noticeDate >= thirtyDaysAgo;
