@@ -1,14 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NOTICE_DATA } from '../constants/noticeData';
 import ImageModal from '../components/common/ImageModal';
+import { Share2, Check } from 'lucide-react';
 
 const Notice = () => {
   const { type } = useParams();
+  const location = useLocation();
   const { t } = useTranslation();
   const [activeNoticeId, setActiveNoticeId] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [toastMessage, setToastMessage] = useState(null);
   const noticeBoardRef = useRef(null);
 
   useEffect(() => {
@@ -22,6 +25,21 @@ const Notice = () => {
       document.removeEventListener('click', handleOutsideClick);
     };
   }, []);
+
+  // URL ?id= 파라미터 감지 시 자동 펼침 및 스크롤 이동
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const targetId = params.get('id');
+    if (targetId) {
+      setActiveNoticeId(targetId);
+      setTimeout(() => {
+        const el = document.getElementById(`notice-${targetId}`);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 350);
+    }
+  }, [location.search, type]);
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
@@ -55,6 +73,42 @@ const Notice = () => {
         </span>
       );
     });
+  };
+
+  const handleShare = async (e, notice) => {
+    e.stopPropagation();
+    const shareUrl = `${window.location.origin}/notice/${notice.type || type}?id=${notice.id}`;
+    const shareData = {
+      title: notice.title,
+      text: notice.title,
+      url: shareUrl
+    };
+
+    if (navigator.share && navigator.canShare && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+        return;
+      } catch (err) {
+        if (err.name === 'AbortError') return;
+      }
+    }
+
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(shareUrl);
+      } else {
+        const textArea = document.createElement('textarea');
+        textArea.value = shareUrl;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+      }
+      setToastMessage(t('msgLinkCopied'));
+      setTimeout(() => setToastMessage(null), 2500);
+    } catch (err) {
+      console.error('Failed to copy share link:', err);
+    }
   };
 
   const getTitle = () => {
@@ -91,6 +145,7 @@ const Notice = () => {
                   return (
                     <div 
                       key={notice.id}
+                      id={`notice-${notice.id}`}
                       className="notice-item-wrapper"
                       style={{ 
                         display: 'flex', 
@@ -104,12 +159,41 @@ const Notice = () => {
                         onClick={() => setActiveNoticeId(isActive ? null : notice.id)}
                         style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}
                       >
-                        <div className="notice-left">
+                        <div className="notice-left" style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', flexWrap: 'wrap' }}>
                           <span className="notice-dot"></span>
                           <span>{notice.title}</span>
+                          {isActive && (
+                            <span
+                              role="button"
+                              tabIndex={0}
+                              className="notice-tag"
+                              onClick={(e) => handleShare(e, notice)}
+                              onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                  e.preventDefault();
+                                  handleShare(e, notice);
+                                }
+                              }}
+                              style={{
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.35rem',
+                                backgroundColor: 'var(--dark-green, #112a22)',
+                                color: '#ffffff',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease',
+                                whiteSpace: 'nowrap',
+                                userSelect: 'none'
+                              }}
+                              title={t('btnShare')}
+                            >
+                              <Share2 size={13} strokeWidth={2.5} style={{ flexShrink: 0 }} />
+                              <span>{t('btnShare')}</span>
+                            </span>
+                          )}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                          <span className={`notice-tag ${notice.tagClass || ''}`} style={{ whiteSpace: 'nowrap' }}>{notice.date}</span>
+                          <span className={`notice-tag ${notice.tagClass || ''}`} style={{ whiteSpace: 'nowrap', display: 'inline-flex', alignItems: 'center' }}>{notice.date}</span>
                           <span style={{ fontSize: '0.8rem', opacity: 0.6, transform: isActive ? 'rotate(180deg)' : 'none', transition: 'transform 0.3s', display: 'inline-block' }}>▼</span>
                         </div>
                       </div>
@@ -184,6 +268,32 @@ const Notice = () => {
         </div>
       </div>
       <ImageModal src={selectedImage} onClose={() => setSelectedImage(null)} />
+      {toastMessage && (
+        <div
+          style={{
+            position: 'fixed',
+            bottom: '2.5rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            backgroundColor: 'rgba(17, 24, 39, 0.92)',
+            color: '#fff',
+            padding: '0.75rem 1.4rem',
+            borderRadius: '50px',
+            fontSize: '0.88rem',
+            fontWeight: 500,
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+            backdropFilter: 'blur(8px)',
+            pointerEvents: 'none'
+          }}
+        >
+          <Check size={16} color="#34d399" />
+          <span>{toastMessage}</span>
+        </div>
+      )}
     </main>
   );
 };
