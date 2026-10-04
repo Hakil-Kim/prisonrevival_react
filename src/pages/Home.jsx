@@ -20,10 +20,46 @@ const Home = () => {
   const [meditationDates, setMeditationDates] = useState({});
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeNoticeId, setActiveNoticeId] = useState(null);
+  const [showBazaarPopup, setShowBazaarPopup] = useState(false);
   const noticeBoardRef = useRef(null);
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
+  };
+
+  // 세움 바자회 팝업 오늘 하루 보지 않기 체크
+  useEffect(() => {
+    try {
+      const hideUntil = localStorage.getItem('hide_seum_bazaar_popup');
+      if (hideUntil) {
+        const expireTime = parseInt(hideUntil, 10);
+        if (Date.now() < expireTime) {
+          return;
+        }
+      }
+      setShowBazaarPopup(true);
+    } catch (e) {
+      setShowBazaarPopup(true);
+    }
+  }, []);
+
+  const handleCloseBazaarPopup = () => {
+    setShowBazaarPopup(false);
+  };
+
+  const handleHideBazaarPopupDay = () => {
+    try {
+      const expireTime = Date.now() + 24 * 60 * 60 * 1000;
+      localStorage.setItem('hide_seum_bazaar_popup', expireTime.toString());
+    } catch (e) {
+      console.error(e);
+    }
+    setShowBazaarPopup(false);
+  };
+
+  const handleBazaarPopupClick = () => {
+    setShowBazaarPopup(false);
+    navigate('/notice/general?id=m1004bazaar01');
   };
 
   useEffect(() => {
@@ -663,6 +699,138 @@ const Home = () => {
         src={selectedImage} 
         onClose={() => setSelectedImage(null)} 
       />
+
+      {/* Seum Bazaar Popup Modal */}
+      {showBazaarPopup && (
+        <div
+          style={{
+            position: 'fixed',
+            inset: 0,
+            zIndex: 10000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            backgroundColor: 'rgba(0, 0, 0, 0.72)',
+            backdropFilter: 'blur(5px)',
+            padding: '1rem',
+            animation: 'fadeIn 0.3s ease'
+          }}
+          onClick={handleCloseBazaarPopup}
+        >
+          <div
+            style={{
+              backgroundColor: '#fff',
+              borderRadius: '20px',
+              overflow: 'hidden',
+              maxWidth: '420px',
+              width: '100%',
+              maxHeight: '90vh',
+              display: 'flex',
+              flexDirection: 'column',
+              boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.4)',
+              cursor: 'default'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Poster Image (Clickable Link to Notice) */}
+            <div
+              style={{
+                position: 'relative',
+                cursor: 'pointer',
+                overflow: 'auto',
+                backgroundColor: '#f8fafc'
+              }}
+              onClick={handleBazaarPopupClick}
+              title="클릭 시 세움 바자회 공지글로 이동합니다"
+            >
+              <img
+                src="/images/notice/seum_bazaar_202610.jpg"
+                alt="세움 바자회 안내 포스터"
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                  display: 'block'
+                }}
+              />
+              <div
+                style={{
+                  position: 'absolute',
+                  bottom: '12px',
+                  right: '12px',
+                  backgroundColor: 'rgba(17, 42, 34, 0.9)',
+                  color: '#b8e986',
+                  padding: '0.45rem 0.85rem',
+                  borderRadius: '20px',
+                  fontSize: '0.8rem',
+                  fontWeight: 700,
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+                  backdropFilter: 'blur(4px)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.35rem'
+                }}
+              >
+                <span>공지 상세보기 ➔</span>
+              </div>
+            </div>
+
+            {/* Bottom Control Bar */}
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                padding: '0.85rem 1.25rem',
+                backgroundColor: 'var(--dark-green, #112a22)',
+                color: '#fff',
+                fontSize: '0.85rem'
+              }}
+            >
+              <button
+                type="button"
+                onClick={handleHideBazaarPopupDay}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  cursor: 'pointer',
+                  fontSize: '0.85rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.4rem',
+                  padding: '0.2rem 0',
+                  transition: 'color 0.2s'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#b8e986')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = 'rgba(255, 255, 255, 0.8)')}
+              >
+                <span>오늘 하루 보지 않기</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={handleCloseBazaarPopup}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: '#fff',
+                  cursor: 'pointer',
+                  fontSize: '0.85rem',
+                  fontWeight: 700,
+                  padding: '0.2rem 0',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.3rem'
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = '#b8e986')}
+                onMouseLeave={(e) => (e.currentTarget.style.color = '#fff')}
+              >
+                <span>닫기 ✕</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 };
