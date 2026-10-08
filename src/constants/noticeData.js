@@ -13,6 +13,24 @@
  */
 export const NOTICE_DATA = [
   {
+    id: "m1007angel01",
+    type: "angeltree-acc",
+    title: "만나브릿지 엔젤트리 9월 후원 보고",
+    date: "2026.10.07",
+    content: `[만나브릿지 9월 모금결과-상세]
+모금액 총 2,750,000원
+📌 정기후원: 2,270,000원/137건
+📌 계좌이체: 480,000원/20건
+
+(기간: 2026.08.21~2026.09.20)`,
+    images: [
+      "/images/notice/angeltree_report_202609_1.png",
+      "/images/notice/angeltree_report_202609_2.png",
+      "/images/notice/angeltree_report_202609_3.png",
+      "/images/notice/angeltree_report_202609_4.png"
+    ]
+  },
+  {
     id: "m1006homeless01",
     type: "general",
     title: "프리즌 홈리스 아웃리치 나눔 안내",
