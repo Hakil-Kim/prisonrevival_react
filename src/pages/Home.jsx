@@ -20,46 +20,64 @@ const Home = () => {
   const [meditationDates, setMeditationDates] = useState({});
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeNoticeId, setActiveNoticeId] = useState(null);
-  const [showBazaarPopup, setShowBazaarPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const noticeBoardRef = useRef(null);
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
   };
 
-  // 세움 바자회 팝업 오늘 하루 보지 않기 체크
+  // 홈 화면 팝업 노출 여부 및 오늘 하루 보지 않기 체크
   useEffect(() => {
+    if (!CONFIG.popup?.enabled) {
+      setShowPopup(false);
+      return;
+    }
+
     try {
-      const hideUntil = localStorage.getItem('hide_seum_bazaar_popup');
+      const storageKey = `hide_home_popup_${CONFIG.popup.id || 'default'}`;
+      const hideUntil = localStorage.getItem(storageKey);
       if (hideUntil) {
         const expireTime = parseInt(hideUntil, 10);
         if (Date.now() < expireTime) {
           return;
         }
       }
-      setShowBazaarPopup(true);
+      setShowPopup(true);
     } catch (e) {
-      setShowBazaarPopup(true);
+      setShowPopup(true);
     }
   }, []);
 
-  const handleCloseBazaarPopup = () => {
-    setShowBazaarPopup(false);
+  const handleClosePopup = () => {
+    setShowPopup(false);
   };
 
-  const handleHideBazaarPopupDay = () => {
+  const handleHidePopupDay = () => {
     try {
+      const storageKey = `hide_home_popup_${CONFIG.popup?.id || 'default'}`;
       const expireTime = Date.now() + 24 * 60 * 60 * 1000;
-      localStorage.setItem('hide_seum_bazaar_popup', expireTime.toString());
+      localStorage.setItem(storageKey, expireTime.toString());
     } catch (e) {
-      console.error(e);
+      console.error("Failed to save popup hide expiration:", e);
     }
-    setShowBazaarPopup(false);
+    setShowPopup(false);
   };
 
-  const handleBazaarPopupClick = () => {
-    setShowBazaarPopup(false);
-    navigate('/notice/general?id=m1004bazaar01');
+  const handlePopupClick = () => {
+    setShowPopup(false);
+    const link = CONFIG.popup?.linkUrl;
+    if (!link) return;
+
+    try {
+      if (link.startsWith('http://') || link.startsWith('https://')) {
+        window.open(link, '_blank');
+      } else {
+        navigate(link);
+      }
+    } catch (e) {
+      console.error("Popup navigation failed:", e);
+    }
   };
 
   useEffect(() => {
@@ -700,8 +718,8 @@ const Home = () => {
         onClose={() => setSelectedImage(null)} 
       />
 
-      {/* Seum Bazaar Popup Modal */}
-      {showBazaarPopup && (
+      {/* Home Popup Modal */}
+      {showPopup && CONFIG.popup?.enabled && (
         <div
           style={{
             position: 'fixed',
@@ -715,7 +733,7 @@ const Home = () => {
             padding: '1rem',
             animation: 'fadeIn 0.3s ease'
           }}
-          onClick={handleCloseBazaarPopup}
+          onClick={handleClosePopup}
         >
           <div
             style={{
@@ -732,46 +750,48 @@ const Home = () => {
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Poster Image (Clickable Link to Notice) */}
+            {/* Poster Image (Clickable Link) */}
             <div
               style={{
                 position: 'relative',
-                cursor: 'pointer',
+                cursor: CONFIG.popup?.linkUrl ? 'pointer' : 'default',
                 overflow: 'auto',
                 backgroundColor: '#f8fafc'
               }}
-              onClick={handleBazaarPopupClick}
-              title="클릭 시 세움 바자회 공지글로 이동합니다"
+              onClick={handlePopupClick}
+              title={CONFIG.popup?.linkUrl ? "클릭 시 안내 링크로 이동합니다" : undefined}
             >
               <img
-                src="/images/notice/seum_bazaar_202610.jpg"
-                alt="세움 바자회 안내 포스터"
+                src={CONFIG.popup?.imageSrc}
+                alt={CONFIG.popup?.altText || "안내 팝업 포스터"}
                 style={{
                   width: '100%',
                   height: 'auto',
                   display: 'block'
                 }}
               />
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '12px',
-                  right: '12px',
-                  backgroundColor: 'rgba(17, 42, 34, 0.9)',
-                  color: '#b8e986',
-                  padding: '0.45rem 0.85rem',
-                  borderRadius: '20px',
-                  fontSize: '0.8rem',
-                  fontWeight: 700,
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
-                  backdropFilter: 'blur(4px)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.35rem'
-                }}
-              >
-                <span>공지 상세보기 ➔</span>
-              </div>
+              {CONFIG.popup?.linkUrl && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    bottom: '12px',
+                    right: '12px',
+                    backgroundColor: 'rgba(17, 42, 34, 0.9)',
+                    color: '#b8e986',
+                    padding: '0.45rem 0.85rem',
+                    borderRadius: '20px',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.25)',
+                    backdropFilter: 'blur(4px)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.35rem'
+                  }}
+                >
+                  <span>{CONFIG.popup?.linkButtonText || "공지 상세보기 ➔"}</span>
+                </div>
+              )}
             </div>
 
             {/* Bottom Control Bar */}
@@ -788,7 +808,7 @@ const Home = () => {
             >
               <button
                 type="button"
-                onClick={handleHideBazaarPopupDay}
+                onClick={handleHidePopupDay}
                 style={{
                   background: 'none',
                   border: 'none',
@@ -809,7 +829,7 @@ const Home = () => {
 
               <button
                 type="button"
-                onClick={handleCloseBazaarPopup}
+                onClick={handleClosePopup}
                 style={{
                   background: 'none',
                   border: 'none',
