@@ -3,13 +3,17 @@ import { useParams, Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { NOTICE_DATA } from '../constants/noticeData';
 import ImageModal from '../components/common/ImageModal';
+import Pagination from '../components/common/Pagination';
 import { Share2, Check } from 'lucide-react';
+
+const ITEMS_PER_PAGE = 10;
 
 const Notice = () => {
   const { type } = useParams();
   const location = useLocation();
   const { t } = useTranslation();
   const [activeNoticeId, setActiveNoticeId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
   const [selectedImage, setSelectedImage] = useState(null);
   const [toastMessage, setToastMessage] = useState(null);
   const noticeBoardRef = useRef(null);
@@ -26,11 +30,19 @@ const Notice = () => {
     };
   }, []);
 
-  // URL ?id= 파라미터 감지 시 자동 펼침 및 스크롤 이동
+  // URL ?id= 파라미터 감지 시 해당 공지가 포함된 페이지로 이동 및 자동 펼침 & 스크롤
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const targetId = params.get('id');
     if (targetId) {
+      const filtered = NOTICE_DATA
+        .filter(notice => notice.type === type)
+        .sort((a, b) => b.date.localeCompare(a.date));
+      const targetIndex = filtered.findIndex(n => n.id === targetId);
+      if (targetIndex !== -1) {
+        const targetPage = Math.floor(targetIndex / ITEMS_PER_PAGE) + 1;
+        setCurrentPage(targetPage);
+      }
       setActiveNoticeId(targetId);
       setTimeout(() => {
         const el = document.getElementById(`notice-${targetId}`);
@@ -38,8 +50,19 @@ const Notice = () => {
           el.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       }, 350);
+    } else {
+      setCurrentPage(1);
+      setActiveNoticeId(null);
     }
   }, [location.search, type]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    setActiveNoticeId(null);
+    if (noticeBoardRef.current) {
+      noticeBoardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
@@ -138,9 +161,16 @@ const Notice = () => {
               .filter(notice => notice.type === type)
               .sort((a, b) => b.date.localeCompare(a.date));
 
+            const totalPages = Math.ceil(filteredNotices.length / ITEMS_PER_PAGE);
+            const safeCurrentPage = Math.min(Math.max(currentPage, 1), Math.max(totalPages, 1));
+            const pagedNotices = filteredNotices.slice(
+              (safeCurrentPage - 1) * ITEMS_PER_PAGE,
+              safeCurrentPage * ITEMS_PER_PAGE
+            );
+
             return filteredNotices.length > 0 ? (
               <div className="notice-board" ref={noticeBoardRef} style={{ maxWidth: '800px', margin: '0 auto' }}>
-                {filteredNotices.map((notice, index) => {
+                {pagedNotices.map((notice, index) => {
                   const isActive = activeNoticeId === notice.id;
                   return (
                     <div 
@@ -245,6 +275,11 @@ const Notice = () => {
                     </div>
                   );
                 })}
+                <Pagination
+                  currentPage={safeCurrentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
               </div>
             ) : (
               <div style={{ 

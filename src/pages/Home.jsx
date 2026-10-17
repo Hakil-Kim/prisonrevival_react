@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import VideoModal from '../components/common/VideoModal';
 import AlertModal from '../components/common/AlertModal';
 import ImageModal from '../components/common/ImageModal';
+import Pagination from '../components/common/Pagination';
 import { CONFIG } from '../constants/config';
 import { MEDITATION_DATES } from '../constants/meditation_data';
 import { getMeditationData } from '../services/meditationService';
@@ -20,8 +21,17 @@ const Home = () => {
   const [meditationDates, setMeditationDates] = useState({});
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [activeNoticeId, setActiveNoticeId] = useState(null);
+  const [noticeCurrentPage, setNoticeCurrentPage] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
   const noticeBoardRef = useRef(null);
+
+  const handleNoticePageChange = (page) => {
+    setNoticeCurrentPage(page);
+    setActiveNoticeId(null);
+    if (noticeBoardRef.current) {
+      noticeBoardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   const handleImageClick = (src) => {
     setSelectedImage(src);
@@ -593,6 +603,7 @@ const Home = () => {
           <h2 className="section-title">{t('noticeTitle')}</h2>
           <div className="notice-board" ref={noticeBoardRef}>
             {(() => {
+              const ITEMS_PER_PAGE = 10;
               const today = new Date();
               const thirtyDaysAgo = new Date();
               thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -606,8 +617,16 @@ const Home = () => {
                 })
                 .sort((a, b) => b.date.localeCompare(a.date));
 
+              const totalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE);
+              const safeCurrentPage = Math.min(Math.max(noticeCurrentPage, 1), Math.max(totalPages, 1));
+              const pagedNotices = filtered.slice(
+                (safeCurrentPage - 1) * ITEMS_PER_PAGE,
+                safeCurrentPage * ITEMS_PER_PAGE
+              );
+
               return filtered.length > 0 ? (
-                filtered.map((notice, index) => {
+                <>
+                  {pagedNotices.map((notice, index) => {
                   const isActive = activeNoticeId === notice.id;
                   return (
                     <div 
@@ -681,7 +700,13 @@ const Home = () => {
                       </div>
                     </div>
                   );
-                })
+                })}
+                  <Pagination
+                    currentPage={safeCurrentPage}
+                    totalPages={totalPages}
+                    onPageChange={handleNoticePageChange}
+                  />
+                </>
               ) : (
                 <div style={{ 
                   background: 'white', 
