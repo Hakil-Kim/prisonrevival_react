@@ -326,6 +326,14 @@ export const MEDITATION_DATES = {
     "es": "https://file.prisonrevival.org/meditation/261010_SPANISH.pdf",
     "pt": "https://file.prisonrevival.org/meditation/261010_PORTUGUESE.pdf",
     "tl": "https://file.prisonrevival.org/meditation/261010_TAGALOG.pdf"
+  },
+  "2026-10-17": {
+    "ko": "https://file.prisonrevival.org/meditation/261017_PRISON.pdf",
+    "en": "https://file.prisonrevival.org/meditation/261017_ENGLISH.pdf",
+    "zh": "https://file.prisonrevival.org/meditation/261017_CHINESE.pdf",
+    "es": "https://file.prisonrevival.org/meditation/261017_SPANISH.pdf",
+    "pt": "https://file.prisonrevival.org/meditation/261017_PORTUGUESE.pdf",
+    "tl": "https://file.prisonrevival.org/meditation/261017_TAGALOG.pdf"
   }
 };
 
