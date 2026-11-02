@@ -4182,6 +4182,16 @@ footer {
   height: auto;
   display: block;
   border-radius: 12px;
+  cursor: zoom-in;
+}
+
+.creeds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 /* Christmas Angel Tree Custom Styles */

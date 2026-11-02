@@ -431,6 +431,7 @@ const Meditation = () => {
                   src="/images/programs/lord_prayer_creed.png"
                   alt="프리즌 리바이벌 주기도문 + 사도신경"
                   className="creeds-img"
+                  onClick={() => handleImageClick('/images/programs/lord_prayer_creed.png')}
                 />
               </div>
               <div className="creeds-action" style={{ marginTop: '2.5rem' }}>
@@ -452,7 +453,24 @@ const Meditation = () => {
               </div>
             </div>
           ) : (
-            <p style={{ textAlign: 'center', opacity: 0.7 }}>{t('materialsPreparing')}</p>
+            <div className="creeds-grid">
+              <div className="creeds-image-wrapper">
+                <img
+                  src="/images/programs/lords_prayer_en.jpg"
+                  alt="The Lord's Prayer"
+                  className="creeds-img"
+                  onClick={() => handleImageClick('/images/programs/lords_prayer_en.jpg')}
+                />
+              </div>
+              <div className="creeds-image-wrapper">
+                <img
+                  src="/images/programs/apostles_creed_en.jpg"
+                  alt="The Apostles' Creed"
+                  className="creeds-img"
+                  onClick={() => handleImageClick('/images/programs/apostles_creed_en.jpg')}
+                />
+              </div>
+            </div>
           )}
           <div style={{ marginTop: '6rem', textAlign: 'center', marginBottom: '4rem' }}>
             <Link to="/" className="secondary-btn">{t('backToHome')}</Link>

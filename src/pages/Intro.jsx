@@ -121,7 +121,7 @@ const Intro = () => {
           <div className="missionary-intro-container">
             <div className="missionary-profile-column">
               <div className="missionary-photo-area">
-                <img src="/images/profile/missionary_eunmi_lim.jpg" alt="Missionary" className="missionary-profile-img" />
+                <img src="/images/profile/missionary_eunice_lim.jpg" alt="Missionary" className="missionary-profile-img" />
               </div>
             </div>
             <div className="missionary-recommendation-area">
