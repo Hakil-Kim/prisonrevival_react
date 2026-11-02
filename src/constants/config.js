@@ -1,11 +1,11 @@
 export const CONFIG = {
   // 홈 화면 팝업 설정 (노출 여부 및 내용)
   popup: {
-    enabled: false, // 팝업 노출 여부 (true: 표시, false: 미표시)
-    id: "seum_bazaar_202610", // 팝업 고유 ID ('오늘 하루 보지 않기' 스토리지 키로 사용)
-    imageSrc: "/images/notice/seum_bazaar_202610.jpg",
-    altText: "세움 바자회 안내 포스터",
-    linkUrl: "/notice/general?id=m1004bazaar01", // 클릭 시 이동 링크 (내부 경로 또는 https:// 외부 링크 지원)
+    enabled: true, // 팝업 노출 여부 (true: 표시, false: 미표시)
+    id: "angeltree_202611", // 팝업 고유 ID ('오늘 하루 보지 않기' 스토리지 키로 사용)
+    imageSrc: "/images/notice/angeltree_202611.jpg",
+    altText: "7th 2026 AngelTree 성탄절 후원 안내 포스터",
+    linkUrl: "/notice/general?id=m1102angeltree01", // 클릭 시 이동 링크 (내부 경로 또는 https:// 외부 링크 지원)
     linkButtonText: "공지 상세보기 ➔"
   },
   currentMonthWeeks: 4,
