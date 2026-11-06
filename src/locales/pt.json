@@ -233,7 +233,7 @@
   "volProg2Poster": "/images/volunteer_programs/personal_prayer_pt.jpg",
   "volProg3Poster": "/images/volunteer_programs/homeless_outreach_pt.jpg",
   "volProg4Poster": "/images/volunteer_programs/alliance_study_pt.jpg",
-  "prayerPoster": "/images/programs/KakaoTalk_Photo_2026-04-29-14-37-18.png",
+  "prayerPoster": "/images/programs/prayer_poster_en.jpg",
   "biblePoster": "/images/programs/KakaoTalk_Photo_2026-04-29-14-38-46.png",
   "monasteryPoster": "/images/programs/KakaoTalk_Photo_2026-04-29-14-37-58.png",
   "flowingPoster": "/images/programs/KakaoTalk_Photo_2026-04-27-09-39-59 001.png",
@@ -377,5 +377,7 @@
   "partnerBannerAlliance": "/images/partners/partner_banner_alliance_en.png",
   "partnerBannerFellowship": "/images/partners/partner_banner_fellowship_en.png",
   "btnShare": "Compartilhar",
-  "msgLinkCopied": "Link copiado para a área de transferência."
+  "msgLinkCopied": "Link copiado para a área de transferência.",
+  "angelMannaAngelBannerImg": "/images/angeltree/angel_manna_angel_banner_en.jpg",
+  "prisonAngelGuideImg": "/images/angeltree/prison_angel_guide_en.jpg"
 }

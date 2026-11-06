@@ -223,8 +223,8 @@ const AngelTree = () => {
       {/* 4. Angel Tree : Manna Bridge in Angel Tree */}
       <section id="manna-angel" className="guide-section scroll-reveal">
         <div className="split-layout" style={{ alignItems: 'start' }}>
-          <div className="program-img-col" style={{ cursor: 'zoom-in' }} onClick={() => handleImageClick('/images/angeltree/angel_manna_angel_banner.png')}>
-            <img src="/images/angeltree/angel_manna_angel_banner.png" alt="Manna Bridge in Angel Tree Banner" style={{ width: '100%', height: 'auto', borderRadius: '12px', display: 'block' }} />
+          <div className="program-img-col" style={{ cursor: 'zoom-in' }} onClick={() => handleImageClick(t('angelMannaAngelBannerImg'))}>
+            <img src={t('angelMannaAngelBannerImg')} alt="Manna Bridge in Angel Tree Banner" style={{ width: '100%', height: 'auto', borderRadius: '12px', display: 'block' }} />
           </div>
           <div className="content-col">
             <h3>{t('mannaAngelTitle')}</h3>
@@ -250,10 +250,10 @@ const AngelTree = () => {
             boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
             display: 'block'
           }} 
-          onClick={() => handleImageClick('/images/angeltree/prison_angel_guide.jpg')}
+          onClick={() => handleImageClick(t('prisonAngelGuideImg'))}
         >
           <img 
-            src="/images/angeltree/prison_angel_guide.jpg" 
+            src={t('prisonAngelGuideImg')} 
             alt="Prison Angel Tree Guide Poster" 
             style={{ 
               width: '100%', 
