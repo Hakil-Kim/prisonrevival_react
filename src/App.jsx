@@ -14,6 +14,7 @@ import Notice from './pages/Notice';
 import ContactManagers from './pages/ContactManagers';
 import Admin from './pages/Admin';
 import Sitemap from './pages/Sitemap';
+import FaithMission from './pages/FaithMission';
 import NotFound from './pages/NotFound';
 import './styles/index.css';
 
@@ -117,6 +118,8 @@ const ScrollToTop = () => {
       pageTitle = `관리자 - ${baseSiteTitle}`;
     } else if (pathname === '/sitemap') {
       pageTitle = `${t('navSitemap')} - ${baseSiteTitle}`;
+    } else if (pathname === '/faith-mission') {
+      pageTitle = `${currentLang === 'ko' ? '신앙고백 및 사명선언' : 'Statement of Faith & Mission'} - ${baseSiteTitle}`;
     }
     
     const sanitizedTitle = cleanHtmlText(pageTitle);
@@ -225,6 +228,7 @@ const App = () => {
           <Route path="/contact-managers" element={<ContactManagers />} />
           <Route path="/admin" element={<Admin />} />
           <Route path="/sitemap" element={<Sitemap />} />
+          <Route path="/faith-mission" element={<FaithMission />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

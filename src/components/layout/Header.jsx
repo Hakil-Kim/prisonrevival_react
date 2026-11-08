@@ -190,6 +190,8 @@ const Header = () => {
               <li><Link onClick={closeMenu} to="/intro#managers">{t('navSubContactManagers')}</Link></li>
               <li><Link onClick={closeMenu} to="/intro#press">{t('navSubPress')}</Link></li>
               <li><Link onClick={closeMenu} to="/intro#partners">{t('navSubPartners')}</Link></li>
+              <li><Link onClick={closeMenu} to="/faith-mission#faith">{t('navSubFaith')}</Link></li>
+              <li><Link onClick={closeMenu} to="/faith-mission#mission">{t('navSubMission')}</Link></li>
             </ul>
           </li>
           <li className={`dropdown ${activeDropdown === 'meditation' ? 'mobile-active' : ''}`}>

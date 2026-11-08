@@ -379,5 +379,7 @@
   "btnShare": "공유하기",
   "msgLinkCopied": "링크가 클립보드에 복사되었습니다.",
   "angelMannaAngelBannerImg": "/images/angeltree/angel_manna_angel_banner.png",
-  "prisonAngelGuideImg": "/images/angeltree/prison_angel_guide.jpg"
+  "prisonAngelGuideImg": "/images/angeltree/prison_angel_guide.jpg",
+  "navSubFaith": "신앙고백문",
+  "navSubMission": "사명선언문"
 }
