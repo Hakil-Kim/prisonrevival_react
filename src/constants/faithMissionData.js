@@ -28,7 +28,7 @@ export const FAITH_MISSION_DATA = {
           ],
           verse: {
             text: "“그런즉 누구든지 그리스도 안에 있으면 새로운 피조물이라 이전 것은 지나갔으니 보라 새 것이 되었도다.”",
-            reference: "— 고린도후서 5:17"
+            reference: "고린도후서 5:17"
           }
         }
       ]
@@ -107,7 +107,7 @@ export const FAITH_MISSION_DATA = {
           ],
           verse: {
             text: "“주 여호와의 말씀이니라 내가 어찌 악인이 죽는 것을 조금인들 기뻐하랴 그가 돌이켜 그 길에서 떠나 사는 것을 어찌 기뻐하지 아니하겠느냐.”",
-            reference: "— 에스겔 18:23"
+            reference: "에스겔 18:23"
           },
           slogan: "한 영혼을 향한 사랑, 담장을 넘어 전하는 복음."
         }
@@ -143,7 +143,7 @@ export const FAITH_MISSION_DATA = {
           ],
           verse: {
             text: "\"Therefore, if anyone is in Christ, he is a new creation. The old has passed away; behold, the new has come.\"",
-            reference: "— 2 Corinthians 5:17 (ESV)"
+            reference: "2 Corinthians 5:17 (ESV)"
           }
         }
       ]
@@ -222,7 +222,7 @@ export const FAITH_MISSION_DATA = {
           ],
           verse: {
             text: "\"Have I any pleasure in the death of the wicked, declares the Lord GOD, and not rather that he should turn from his way and live?\"",
-            reference: "— Ezekiel 18:23 (ESV)"
+            reference: "Ezekiel 18:23 (ESV)"
           },
           slogan: "Love for Every Soul. The Gospel Beyond Prison Walls."
         }
