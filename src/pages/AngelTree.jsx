@@ -78,8 +78,6 @@ const AngelTree = () => {
     e.stopPropagation();
     const shareUrl = `${window.location.origin}/angeltree?newsId=${news.id}#manna-bridge-news`;
     const shareData = {
-      title: news.title,
-      text: news.title,
       url: shareUrl
     };
 

@@ -102,8 +102,6 @@ const Notice = () => {
     e.stopPropagation();
     const shareUrl = `${window.location.origin}/notice/${notice.type || type}?id=${notice.id}`;
     const shareData = {
-      title: notice.title,
-      text: notice.title,
       url: shareUrl
     };
 
