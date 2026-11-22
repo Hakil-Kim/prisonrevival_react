@@ -381,5 +381,6 @@
   "angelMannaAngelBannerImg": "/images/angeltree/angel_manna_angel_banner.png",
   "prisonAngelGuideImg": "/images/angeltree/prison_angel_guide.jpg",
   "navSubFaith": "신앙고백문",
-  "navSubMission": "사명선언문"
+  "navSubMission": "사명선언문",
+  "donateTooltip": "기부(donation)"
 }
