@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
-import FloatingDonate from './components/common/FloatingDonate';
 import Home from './pages/Home';
 import Meditation from './pages/Meditation';
 import Intro from './pages/Intro';
@@ -216,7 +215,6 @@ const App = () => {
       <div className="app">
         <ScrollToTop />
         <Header />
-        <FloatingDonate />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/intro" element={<Intro />} />
